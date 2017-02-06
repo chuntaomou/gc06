@@ -8,7 +8,7 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
   <script src="js/homepagecontroller.js"></script>
   <title>GC06 - Home</title>
   <link rel="shortcut icon" href="icons/webicon.ico" type="image/x-icon">
-<!--  <link href="css/gc06.css" rel="stylesheet" type="text/css"> -->
+  <link href="css/gc06.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -19,23 +19,28 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
-<body class="no_col_2">
-  <div id="site" ng-app="gc06Web" ng-controller="homepageCtrl">
+<body>
+  <div class="container" style="background: #F8F8FF">
     <?php require 'includes/headbar.php';
     ?>
-    <div id="content">
-      <div class="inner">
+      <div class="row">
         <a href="userprofile.php" id="user">Hi, username</a>
         <form class="searchform cf" id="quick_search">
           <input type=“text” placeholder="search for people">
           <button type=“submit”>Search</button>
         </form>
       </div>
-      <div id="nav_main" role="navigation">
+      <div class="row" style="background-color:#3b5998; padding-top: 20px;">
         <ul>
-          <a href="addtext.php" id="addtext"><span>Add Text</span></a>
-          <a href="addphoto.php" id="addphoto"><span>Add Photo</span></a>
-          <a href="addblog.php" id="addblog"><span>Add Blog</span></a>
+          <div class="col-sm-4">
+            <a href="addtext.php" id="addtext" style="text-decoration:none;">Add Text</a>
+          </div>
+          <div class="col-sm-4">
+            <a href="addphoto.php" id="addphoto" style="text-decoration:none;">Add Photo</a>
+          </div>
+          <div class="col-sm-4">
+            <a href="addblog.php" id="addblog" style="text-decoration:none;">Add Blog</a>
+          </div>
         </ul>
       </div>
       <div id="contentframe">
@@ -83,31 +88,32 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
           </div>
         </div>
         </div>
-        <div id="friendmayknowcol">
-          <?php
-          foreach($friendmayknow as $friend){
-            echo "
-            <div id='frirequestlist'>
+        <div class="col-sm-4" style="background-color: white; height: 900px;">
+          <div id="friendmayknowcol">
+            <?php
+            foreach($friendmayknow as $friend){
+              echo "
+              <div>
 
-            <img
-            src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
-            width='40' height='40'>
-            <div id='friendbutton'>
-            <button id='fri'>Add Friend</button>
-            </div>
-            <div id='ignorebutton'>
-            <button id='ign'>Ignore</button>
-            </div>
-            <div id='name'>
-              $friend
-            </div>
-            </div>
-            ";
-          }
-          ?>
-      </div>
+              <img
+              src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
+              width='40' height='40'>
+              <div id='friendbutton'>
+              <button id='fri'>Add Friend</button>
+              </div>
+              <div id='ignorebutton'>
+              <button id='ign'>Ignore</button>
+              </div>
+              <div id='name'>
+                $friend
+              </div>
+              </div>
+              ";
+            }
+            ?>
+          </div>
+        </div>
     </div>
-  </div>
   <?php require 'includes/footer.php';
   ?>
 </div>
