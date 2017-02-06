@@ -225,7 +225,7 @@ body {
 }
 /*---------------------------------*/
 a:link {
-    color: #408dac;
+    color: white;
     text-decoration: underline;
 }
 a:visited {
@@ -614,12 +614,16 @@ a.checkout, input.checkout {
 }
 #quick_links {
     float: left;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    color: white;
 }
 #quick_links li {
     display: inline-block;
 }
 #quick_links li:after {
-    color: #6fa9c0;
+    color: white;
     content: '|';
 }
 #quick_links li:last-child:after {
@@ -742,15 +746,15 @@ html:not(.jquery) #nav_main > ul > li:hover div, #nav_main > ul > .open div {
 /*   add text add photo add blog bar*/
 #addtext{
     font-size: 20px;
-    padding-left: 80px;
+    color: white;
 }
 #addphoto{
     font-size: 20px;
-    padding-left: 200px;
+    color: white;
 }
 #addblog{
     font-size: 20px;
-    padding-left: 200px;
+    color: white;
 }
 /*-------------------------------------------------------------------------------*/
 #content {
@@ -777,19 +781,19 @@ html:not(.jquery) #nav_main > ul > li:hover div, #nav_main > ul > .open div {
 #statuscol{
     position: relative;
     float: right;
-    border: 3px solid #73AD21;
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 0px;
-    width: 630px;
     height: 990px;
+    width: 750px;
+    background-color: white;
 }
 #friendmayknowcol{
     position: fixed;
+    border: 3px solid white;
     /*float: right;*/
-    border: 3px solid #73AD21;
-    width: 300px;
-    height: 400px;
+    padding-left: 0px;
+    width: 24%;
 
 }
 #footer {
