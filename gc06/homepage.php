@@ -23,6 +23,8 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
   <div class="container" style="background: #F8F8FF">
     <?php require 'includes/headbar.php';
     ?>
+    <?php require 'mysql_connect.php';
+    ?>
       <div class="row">
         <a href="userprofile.php" id="user">Hi, username</a>
         <form class="searchform cf" id="quick_search">
