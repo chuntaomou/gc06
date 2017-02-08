@@ -1,0 +1,204 @@
+@charset "utf-8";
+#friendmayknowcol{
+  position: fixed;
+
+    border: 3px solid white;
+
+    /*float: right;*/
+
+    padding-left: 0px;
+
+    width: 24%;
+}
+#friendbutton{
+
+  position: relative;
+
+  float: right;
+
+  padding-top: 10px;
+
+  padding-right: 10px;
+
+}
+
+#ignorebutton{
+
+  position: relative;
+
+  float: right;
+
+  padding-top: 10px;
+
+  padding-right: 10px;
+
+}
+
+#fri{
+
+  background:green;
+
+  color: white;
+
+  outline: none;
+
+  border: none;
+
+  border-radius: 5px;
+
+  display: inline-block;
+
+}
+
+#ign{
+
+  background:red;
+
+  color: white;
+
+  outline: none;
+
+  border: none;
+
+  border-radius: 5px;
+
+  display: inline-block;
+
+}
+
+#statuscol{
+
+    position: relative;
+
+}
+.u_image{
+
+  float: left;
+
+  margin-left:10px;
+
+  margin-top: 5px;
+
+}
+
+.u_name{
+
+  float: left;
+
+  margin-left: 10px;
+
+  margin-top: 10px;
+
+  font-size: 30px;
+
+}
+
+.u_time{
+
+  float: right;
+
+  margin-top: 20px;
+
+  margin-right: 10px;
+
+}
+
+#u_info{
+
+  border: 1px solid #73AD21;
+
+  height: 65px;
+
+}
+
+#u_content{
+
+
+
+}
+
+.u_textorphoto{
+
+  font-size: 20px;
+
+  border: 1px solid #73AD21;
+
+  height: auto;
+
+}
+
+.u_commentbar{
+
+  border: 1px solid #73AD21;
+
+  height: auto;
+
+}
+
+#like{
+
+  margin-left: 100px;
+
+}
+
+#comment{
+
+  margin-left: 100px;
+
+}
+
+#share{
+
+  margin-left: 100px;
+
+}
+
+.u_c_image{
+
+  float: left;
+
+  margin-top: 3px;
+
+  margin-left: 3px;
+
+}
+
+.u_c_name{
+
+  float: left;
+
+  margin-left: 10px;
+
+  margin-top: 0px;
+
+  font-size: 16px;
+
+}
+
+.u_c_comment{
+
+  float: left;
+
+  margin-top: 15px;
+
+  margin-left: 25px;
+
+}
+
+.u_c_date{
+
+  float: right;
+
+  margin-top: 15px;
+
+  margin-right: 20px;
+
+}
+
+.u_response{
+
+  margin-top: 39px;
+
+  margin-left: 10px;
+
+}
