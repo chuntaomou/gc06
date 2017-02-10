@@ -4,10 +4,11 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
 ?>
 <html lang="en">
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="js/homepagecontroller.js"></script>
   <title>GC06 - Home</title>
-  <link rel="shortcut icon" href="icons/webicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="iconss/webicon.ico" type="image/x-icon">
   <link href="css/gc06.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
