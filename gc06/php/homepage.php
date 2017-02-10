@@ -67,9 +67,9 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
           </div>
         </div>
           <div class="u_commentbar">
-            <a href="#" id="like" style="text-decoration:none;"><span><img src="icons/likeicon.png" height="45" width="45">Like</span></a>
-            <a href="#" id="comment" style="text-decoration:none;"><span><img src="icons/commenticon.png" height="25" width="20">Comment</span></a>
-            <a href="#" id="share" style="text-decoration:none;"><span><img src="icons/shareicon.png" height="25" width="20">Share</span></a>
+            <a href="#" id="like" style="text-decoration:none;"><span><img src="Icons/likeicon.png" height="45" width="45">Like</span></a>
+            <a href="#" id="comment" style="text-decoration:none;"><span><img src="Icons/commenticon.png" height="25" width="20">Comment</span></a>
+            <a href="#" id="share" style="text-decoration:none;"><span><img src="Icons/shareicon.png" height="25" width="20">Share</span></a>
           </div>
           <div id="u_info">
           <div class="u_image">
