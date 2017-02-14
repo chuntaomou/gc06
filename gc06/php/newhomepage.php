@@ -1,6 +1,12 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <?php
 $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
+$_SESSION["name"]="Tom";
+echo "Session variables are set."
 ?>
 <html lang="en">
 <head>
