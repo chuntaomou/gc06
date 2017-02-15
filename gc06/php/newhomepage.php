@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <?php
 $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');

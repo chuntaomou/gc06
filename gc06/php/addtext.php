@@ -1,10 +1,4 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
-<?php
-echo "User name is ".$_SESSION["name"].".";
-?>
 <html lang="en">
 <head>
   <title>GC06 - Add Text</title>
