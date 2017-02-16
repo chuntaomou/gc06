@@ -1,8 +1,11 @@
+<?php
+session_start();
+ini_set('display_errors', '1');
+ini_set('error_reporting', E_ALL);
+?>
 <!DOCTYPE html>
 <?php
 $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
-$_SESSION["name"]="Tom";
-echo "Session variables are set."
 ?>
 <html lang="en">
 <head>
@@ -14,6 +17,23 @@ echo "Session variables are set."
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="../css/homepage-css.css" rel="stylesheet" type="text/css">
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/homepage.js"></script>
+  <script type="text/javascript">
+  function searchq(){
+    var searchTxt=$("input[name='search']").val();
+    $.post("../php/search.php",{searchVal:searchTxt},function(output){
+      $("#output").html(output);
+    });
+  }
+  </script>
+  <script>
+  $("li"){
+    float:right;
+  }
+  </script>
 </head>
 
 <body>
@@ -22,11 +42,15 @@ echo "Session variables are set."
     ?>
     <div class="row">
       <div class="col-sum-12">
-        <a href="userprofile.php" style="text-decoration: underline; font-size: 40px;">Hi, username</a>
-        <form style="float: right; padding-top: 20px; padding-bottom: 20px;">
-          <input type=“text” placeholder="search for people">
-          <button type=“submit”>Search</button>
+        <a href="userprofile.php" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
+        <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
+          <input type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
+          <!-- <button type=“submit”>Search</button> -->
         </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2" id="output" style="float:right;">
       </div>
     </div>
     <div class="row" style="background-color:#3b5998;">

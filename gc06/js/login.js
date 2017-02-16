@@ -22,7 +22,7 @@ $(document).ready(function(){
       }else if(data=='Email or Password is wrong...!!!!'){
         $('input[type="text"],input[type="password"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
 				alert(data);
-      }else if(data=='Successfully Logged in...'){
+      }else if(data=="Successfully Logged in..."){
         console.log("reset");
         $("form")[0].reset();
 			  $('input[type="text"],input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});

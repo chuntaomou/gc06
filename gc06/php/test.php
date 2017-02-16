@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     ini_set('display_errors', '1');
     ini_set('error_reporting', E_ALL);
 
@@ -30,6 +32,7 @@ else
 	else
 	{
 		echo "Successfully Logged in...";
+    $_SESSION["username"]=$row["user_name"];
 	}
  }
 
