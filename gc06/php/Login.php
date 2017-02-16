@@ -43,7 +43,7 @@
         <!--<button class="btn btn-lg btn-primary btn-block" type="submit" id="Login">Sign in</button>-->
         <input type="button" class="btn btn-lg btn-primary btn-block" name="login" id="login" value="Login">
       </form>
-      <form class="form-signin" action="../php/registration.php">
+      <form class="form-signin" action="../html/registration1.html">
         <button class="btn btn-lg btn-info btn-block" type="submit">Register</button>
       </form>
     </div> <!-- /container -->
