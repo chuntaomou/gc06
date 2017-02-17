@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connection = mysqli_connect('localhost','root','root','socialsite_db') or die('Error connecting to MySQL server.'. mysql_error());
 
 
@@ -14,7 +15,7 @@ if(isset($_POST['searchVal'])){
   }else{
     while($row=mysqli_fetch_array($result)){
       $name=$row["user_name"];
-      $output .='<li><a href="">'.$name.'</a></li>';
+      $output .="<li><a href='../html/uerProfile.html'>".$name."</a></li>";
     }
   }
 }else{
