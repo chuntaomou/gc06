@@ -42,7 +42,7 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
     ?>
     <div class="row">
       <div class="col-sum-12">
-        <a href="userprofile.php" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
+        <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
           <input type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
           <!-- <button type=“submit”>Search</button> -->
@@ -56,13 +56,13 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
     <div class="row" style="background-color:#3b5998;">
       <ul>
         <div class="col-sm-4">
-          <a href="addtext.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Text</a>
+          <a href="../html/addtext.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Text</a>
         </div>
         <div class="col-sm-4">
-          <a href="addphoto.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
+          <a href="../html/addphoto.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
         </div>
         <div class="col-sm-4">
-          <a href="addblog.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Blog</a>
+          <a href="../html/addblog.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Blog</a>
         </div>
       </ul>
     </div>

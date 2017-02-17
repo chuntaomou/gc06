@@ -13,7 +13,7 @@ $(document).ready(function(){
 		  alert("Please fill all fields...!!!!!!");
     }else{
       console.log("post");
-      $.post("../php/test.php",{email1: email, password1:password},
+      $.post("../php/login.php",{email1: email, password1:password},
     function(data){
       if(data=='Invalid Email.......'){
         $('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
