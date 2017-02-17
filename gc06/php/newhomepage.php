@@ -21,6 +21,8 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="../js/homepage.js"></script>
+  <?php require "../includes/checklogin.php"
+  ?>
   <script type="text/javascript">
   function searchq(){
     var searchTxt=$("input[name='search']").val();
