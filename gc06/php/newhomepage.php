@@ -58,13 +58,13 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
     <div class="row" style="background-color:#3b5998;">
       <ul>
         <div class="col-sm-4">
-          <a href="../html/addtext.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Text</a>
+          <a href="../html/addtext.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Text</a>
         </div>
         <div class="col-sm-4">
-          <a href="../html/addphoto.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
+          <a href="../html/addphoto.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
         </div>
         <div class="col-sm-4">
-          <a href="../html/addblog.html" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Blog</a>
+          <a href="../html/addblog.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Blog</a>
         </div>
       </ul>
     </div>

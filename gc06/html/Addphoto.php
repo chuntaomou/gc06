@@ -1,5 +1,7 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <title>GC06 - Add Photo</title>
   <link rel="shortcut icon" href="icons/webicon.ico" type="image/x-icon">
