@@ -1,3 +1,8 @@
+<?php
+
+ini_set('display_error', '1');
+ini_set('error_reporting', E_ALL);
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -125,10 +130,12 @@
 
         function(data){
 
-          alert(data);
-
-          window.location = "../html/registration2.html";
-
+          if(data=='Invalid Email.......'){
+            alert(data);
+          }else{
+            alert(data);
+            window.location = "../html/registration2.php";
+          }
         })
 
       } else {
@@ -146,3 +153,4 @@
 
 
 </body>
+</html>
