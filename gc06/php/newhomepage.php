@@ -5,7 +5,8 @@ ini_set('error_reporting', E_ALL);
 ?>
 <!DOCTYPE html>
 <?php
-$friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
+$friendmayknowfirst_name=array('');
+$friendmayknowlast_name=array('');
 ?>
 <html lang="en">
 <head>
@@ -47,7 +48,7 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
         <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
           <input type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
-          <!-- <button type=“submit”>Search</button> -->
+          <button type=“submit”>Search</button>
         </form>
       </div>
     </div>
@@ -71,8 +72,30 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
     <div class="row">
       <div class="col-sm-4" style="background-color: white; height: 1000px; margin-left: 40px; margin-top: 15px; margin-botton: 15px;">
         <div id="friendmayknowcol">
-          <?php
-          foreach($friendmayknow as $friend){
+
+
+          <!-- search friend may know to user in database -->
+          <?php include "../php/mysql_connect.php";
+          $query="SELECT * FROM user_detail";
+          $result=mysqli_query($connection,$query);
+          $count=mysqli_num_rows($result);
+          if($count==0){
+            echo "There is no user you may know....";
+          }else{
+
+            while($row=mysqli_fetch_array($result)){
+              if($friendmayknowlast_name[0]==null){
+                $friendmayknowlast_name[0]=$row["last_name"];
+                $friendmayknowfirst_name[0]=$row["first_name"];
+              }else{
+                $friendmayknowlast_name[]=$row["last_name"];
+                $friendmayknowfirst_name[]=$row["first_name"];
+              }
+            }
+
+          }
+          mysqli_close($connection);
+          foreach($friendmayknowfirst_name as $friendfirst_name){
             echo "
             <div>
 
@@ -80,13 +103,13 @@ $friendmayknow=array('Mike','Jason'.'Jack','John','Samantha');
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='fri'>Add Friend</button>
+            <button id='fri' onclick='add();'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
-            <button id='ign'>Ignore</button>
+            <button id='ign' onclick='ignore();'>Ignore</button>
             </div>
             <div id='name'>
-              $friend
+              $friendfirst_name
             </div>
             </div>
             ";
