@@ -97,7 +97,7 @@ $friendmayknowlast_name=array('');
           mysqli_close($connection);
           foreach($friendmayknowfirst_name as $friendfirst_name){
             echo "
-            <div>
+            <div id='friend'>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
