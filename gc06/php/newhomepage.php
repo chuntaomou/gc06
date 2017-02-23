@@ -21,8 +21,8 @@ $friendmayknowlast_name=array('');
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/homepage.js"></script>
-  <?php require "../includes/checklogin.php"
+
+  <?php require "../includes/checklogin.php";
   ?>
   <script type="text/javascript">
   function searchq(){
@@ -32,11 +32,7 @@ $friendmayknowlast_name=array('');
     });
   }
   </script>
-  <script>
-  $("li"){
-    float:right;
-  }
-  </script>
+
 </head>
 
 <body>
@@ -97,13 +93,13 @@ $friendmayknowlast_name=array('');
           mysqli_close($connection);
           foreach($friendmayknowfirst_name as $friendfirst_name){
             echo "
-            <div id='$friendfirst_name'>
+            <div>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='fri' onclick='add();'>Add Friend</button>
+            <button id='$friendfirst_name' class='button'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
             <button id='ign' onclick='ignore();'>Ignore</button>
@@ -164,6 +160,25 @@ $friendmayknowlast_name=array('');
         </div>
       </div>
     </div>
+  <script>
+   $("button").click(function() {
+    alert(this.id); // or alert($(this).attr('id'));
+});
+
+    /*
+    function add(){
+      console.log("add");
+        var elem = document.getElementsByClassName('test');
+        elem.parentElement.removeChild(elem);
+    }
+    */
+    function ignore(){
+      console.log("ignore");
+      var elem = document.getElementById("friend");
+      elem.parentElement.removeChild(elem);
+    }
+</script>
+
 
   <?php require '../includes/footer.php';
   ?>
