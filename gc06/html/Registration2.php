@@ -98,7 +98,7 @@ session_start();
     })
 
     $("#back").click(function(){
-      window.location = "../html/registration1.html";
+      window.location = "../html/Registration1.html";
     })
   })
 

@@ -21,8 +21,8 @@ $friendmayknowlast_name=array('');
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/homepage.js"></script>
-  <?php require "../includes/checklogin.php"
+
+  <?php require "../includes/checklogin.php";
   ?>
   <script type="text/javascript">
   function searchq(){
@@ -32,11 +32,7 @@ $friendmayknowlast_name=array('');
     });
   }
   </script>
-  <script>
-  $("li"){
-    float:right;
-  }
-  </script>
+
 </head>
 
 <body>
@@ -44,10 +40,10 @@ $friendmayknowlast_name=array('');
     <?php require '../includes/headbar.php';
     ?>
     <div class="row">
-      <div class="col-sum-12">
+      <div class="col-sum-12" id="thebasic">
         <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
-          <input type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
+          <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
         </form>
       </div>
@@ -97,16 +93,16 @@ $friendmayknowlast_name=array('');
           mysqli_close($connection);
           foreach($friendmayknowfirst_name as $friendfirst_name){
             echo "
-            <div>
+            <div id='$friendfirst_name'>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='fri' onclick='add();'>Add Friend</button>
+            <button id='$friendfirst_name' class='addfriend'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
-            <button id='ign' onclick='ignore();'>Ignore</button>
+            <button id='$friendfirst_name' class ='ignorebutton'>Ignore</button>
             </div>
             <div id='name'>
               $friendfirst_name
@@ -164,6 +160,31 @@ $friendmayknowlast_name=array('');
         </div>
       </div>
     </div>
+  <script>
+   $(".addfriend").click(function() {
+    alert(this.id); // or alert($(this).attr('id'));
+    var elem = document.getElementById(this.id);
+    elem.parentElement.removeChild(elem);
+   });
+
+  $(".ignorebutton").click(function()  {
+    alert(this.id);
+    var elem = document.getElementById(this.id);
+    elem.parentElement.removeChild(elem);
+  })
+    /*
+    function add(){
+      console.log("add");
+        var elem = document.getElementsByClassName('test');
+        elem.parentElement.removeChild(elem);
+    }
+    */
+    function ignore(){
+      console.log("ignore");
+
+    }
+</script>
+
 
   <?php require '../includes/footer.php';
   ?>
