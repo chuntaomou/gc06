@@ -44,10 +44,10 @@ $friendmayknowlast_name=array('');
     <?php require '../includes/headbar.php';
     ?>
     <div class="row">
-      <div class="col-sum-12">
+      <div class="col-sum-12" id="thebasic">
         <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
-          <input type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
+          <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
         </form>
       </div>
