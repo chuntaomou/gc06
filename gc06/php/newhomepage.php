@@ -93,16 +93,16 @@ $friendmayknowlast_name=array('');
           mysqli_close($connection);
           foreach($friendmayknowfirst_name as $friendfirst_name){
             echo "
-            <div>
+            <div id='$friendfirst_name'>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='$friendfirst_name' class='button'>Add Friend</button>
+            <button id='$friendfirst_name' class='addfriend'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
-            <button id='ign' onclick='ignore();'>Ignore</button>
+            <button id='$friendfirst_name' class ='ignorebutton'>Ignore</button>
             </div>
             <div id='name'>
               $friendfirst_name
@@ -161,10 +161,17 @@ $friendmayknowlast_name=array('');
       </div>
     </div>
   <script>
-   $("button").click(function() {
+   $(".addfriend").click(function() {
     alert(this.id); // or alert($(this).attr('id'));
-});
+    var elem = document.getElementById(this.id);
+    elem.parentElement.removeChild(elem);
+   });
 
+  $(".ignorebutton").click(function()  {
+    alert(this.id);
+    var elem = document.getElementById(this.id);
+    elem.parentElement.removeChild(elem);
+  })
     /*
     function add(){
       console.log("add");
@@ -174,8 +181,7 @@ $friendmayknowlast_name=array('');
     */
     function ignore(){
       console.log("ignore");
-      var elem = document.getElementById("friend");
-      elem.parentElement.removeChild(elem);
+
     }
 </script>
 
