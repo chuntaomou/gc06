@@ -134,7 +134,7 @@ ini_set('error_reporting', E_ALL);
             alert(data);
           }else{
             alert(data);
-            window.location = "../html/registration2.php";
+            window.location = "../html/Registration2.php";
           }
         })
 
