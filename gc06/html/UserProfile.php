@@ -68,7 +68,44 @@ session_start();
                 <div class="col-md-4">
                   <img src="../img/user.png" class="img-thumbnail" alt="">
                 </div>
-                <div class="col-md-8">
+              <?php
+              $test=5;
+              if($test==0){
+                echo "
+                  <div class='col-md-8'>
+                    <ul>
+                      <li><strong>Name:</strong>Lou Lou</li>
+                      <li><strong>Email:</strong>loushen@gmail.com</li>
+                      <li><strong>City:</strong>London</li>
+                      <li><strong>University:</strong>UCL</li>
+                      <li><strong>Number:</strong>0734767637</li>
+                      <li><strong>DOB:</strong>September 16th</li>
+                    </ul>
+                    <span class='pull-right'>
+                      <button type='submit'
+                      class='btn btn-sm btn-danger'>Unfriend</button>
+                    </span>
+                  </div>";
+              }else{
+                echo "
+                  <div class='col-md-8'>
+                    <ul>
+                      <li><strong>Name:</strong>Lou Lou</li>
+                      <li><strong>Email:</strong>loushen@gmail.com</li>
+                      <li><strong>City:</strong>London</li>
+                      <li><strong>University:</strong>UCL</li>
+                      <li><strong>Number:</strong>0734767637</li>
+                      <li><strong>DOB:</strong>September 16th</li>
+                    </ul>
+                    <span class='pull-right'>
+                      <button type='submit'
+                      class='btn btn-sm btn-success'>friend</button>
+                    </span>
+                  </div>";
+              }
+              /*
+              echo "
+                <div class='col-md-8'>
                   <ul>
                     <li><strong>Name:</strong>Lou Lou</li>
                     <li><strong>Email:</strong>loushen@gmail.com</li>
@@ -77,11 +114,13 @@ session_start();
                     <li><strong>Number:</strong>0734767637</li>
                     <li><strong>DOB:</strong>September 16th</li>
                   </ul>
-                  <span class="pull-right">
-                    <button type="submit"
-                    class="btn btn-sm btn-info">Edit</button>
+                  <span class='pull-right'>
+                    <button type='submit'
+                    class='btn btn-sm btn-info'>Unfriend</button>
                   </span>
-                </div>
+                </div>";
+                */
+                ?>
               </div><br><br>
               <div class="row">
                 <div class="col-md-12">
