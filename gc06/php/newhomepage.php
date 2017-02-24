@@ -22,8 +22,14 @@ $friendmayknowid=array('');
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- To check if user log in -->
   <?php require "../includes/checklogin.php";
   ?>
+
+  <!-- javascript for searchq() -->
   <script type="text/javascript">
   function searchq(){
     var searchTxt=$("input[name='search']").val();
@@ -37,10 +43,13 @@ $friendmayknowid=array('');
 
 <body>
   <div class="container" style="background: #F8F8FF">
+    <!-- header -->
     <?php require '../includes/headbar.php';
     ?>
+
     <div class="row">
       <div class="col-sum-12" id="thebasic">
+
         <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
@@ -90,6 +99,7 @@ $friendmayknowid=array('');
             }
 
           }
+
           mysqli_close($connection);
           $count=0;
           foreach($friendmayknowid as $friendid){
@@ -100,7 +110,7 @@ $friendmayknowid=array('');
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='$friendid' class='addfriend'>Add Friend</button>
+            <button id='$friendid' class ='addfriend'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
             <button id='$friendid' class ='ignorebutton'>Ignore</button>
@@ -162,6 +172,7 @@ $friendmayknowid=array('');
         </div>
       </div>
     </div>
+
   <script>
    $(".addfriend").click(function() {
     var friendid = this.id;
@@ -179,20 +190,8 @@ $friendmayknowid=array('');
     alert(this.id);
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
-  })
-    /*
-    function add(){
-      console.log("add");
-        var elem = document.getElementsByClassName('test');
-        elem.parentElement.removeChild(elem);
-    }
-    */
-    function ignore(){
-      console.log("ignore");
-
-    }
+  });
 </script>
-
 
   <?php require '../includes/footer.php';
   ?>
