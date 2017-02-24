@@ -33,6 +33,7 @@ else
 	{
 		echo "Successfully Logged in...";
     $_SESSION["username"]=$row["user_name"];
+    $_SESSION["userid"]=$row["user_id"];
 	}
  }
 

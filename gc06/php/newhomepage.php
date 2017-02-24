@@ -6,7 +6,7 @@ ini_set('error_reporting', E_ALL);
 <!DOCTYPE html>
 <?php
 $friendmayknowfirst_name=array('');
-$friendmayknowlast_name=array('');
+$friendmayknowid=array('');
 ?>
 <html lang="en">
 <head>
@@ -80,35 +80,37 @@ $friendmayknowlast_name=array('');
           }else{
 
             while($row=mysqli_fetch_array($result)){
-              if($friendmayknowlast_name[0]==null){
-                $friendmayknowlast_name[0]=$row["last_name"];
+              if($friendmayknowfirst_name[0]==null){
+                $friendmayknowid[0]=$row["user_id"];
                 $friendmayknowfirst_name[0]=$row["first_name"];
               }else{
-                $friendmayknowlast_name[]=$row["last_name"];
+                $friendmayknowid[]=$row["user_id"];
                 $friendmayknowfirst_name[]=$row["first_name"];
               }
             }
 
           }
           mysqli_close($connection);
-          foreach($friendmayknowfirst_name as $friendfirst_name){
+          $count=0;
+          foreach($friendmayknowid as $friendid){
             echo "
-            <div id='$friendfirst_name'>
+            <div id='$friendid'>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='$friendfirst_name' class='addfriend'>Add Friend</button>
+            <button id='$friendid' class='addfriend'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
-            <button id='$friendfirst_name' class ='ignorebutton'>Ignore</button>
+            <button id='$friendid' class ='ignorebutton'>Ignore</button>
             </div>
             <div id='name'>
-              $friendfirst_name
+              $friendmayknowfirst_name[$count]
             </div>
             </div>
             ";
+            $count=$count+1;
           }
           ?>
         </div>
@@ -162,9 +164,15 @@ $friendmayknowlast_name=array('');
     </div>
   <script>
    $(".addfriend").click(function() {
+    var friendid = this.id;
     alert(this.id); // or alert($(this).attr('id'));
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
+           //post the friend request data to the database
+             $.post("../php/addfriend.php",{friendid},
+               function(data){
+              alert(data)
+            })
    });
 
   $(".ignorebutton").click(function()  {
