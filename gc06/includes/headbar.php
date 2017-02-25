@@ -18,7 +18,7 @@ if($count==0){
     src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
     width='40' height='40'>
     <div id='friendbutton'>
-    <button id='$requestid' class ='addfriend'>Add Friend</button>
+    <button id='$requestid' class ='addfriend'>accept</button>
     </div>
     <div id='ignorebutton'>
     <button id='$requestid' class ='ignorebutton'>Ignore</button>
@@ -64,7 +64,7 @@ mysqli_close ($connection);
 <!--log out -->
 <script>
 $("#logout").click(function() {
-   <?php session_destroy();?>
+  
    window.location="../html/Login.php";
 });
 </script>

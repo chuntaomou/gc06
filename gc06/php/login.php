@@ -34,6 +34,15 @@ else
 		echo "Successfully Logged in...";
     $_SESSION["username"]=$row["user_name"];
     $_SESSION["userid"]=$row["user_id"];
+    $userid = $_SESSION["userid"];
+    //get the user firstname and lastname
+    $query="SELECT * FROM user_detail WHERE user_id = '$userid' ";
+    $result = mysqli_query($connection,$query);
+    $row = mysqli_fetch_array($result);
+    $_SESSION["firstname"]=$row["first_name"];
+    $_SESSION["lastname"]=$row["last_name"];
+
+
 	}
  }
 
