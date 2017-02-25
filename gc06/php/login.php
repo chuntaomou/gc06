@@ -20,7 +20,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL))
  }
 else
  {//matching user input email and password with stored email and password in database
-  $query="SELECT * FROM user_login WHERE user_name='$email' AND pass_word='$password'";
+  $query="SELECT * FROM user_login WHERE user_name='$email' AND pass_word=SHA('$password')";
   //$query="SELECT * FROM user_login";
 	$result = mysqli_query($connection,$query);
   $row = mysqli_fetch_array($result);

@@ -33,6 +33,7 @@ mysqli_close ($connection);
     <a href="homepage.php"><img src="../Icons/logo.png" class="img-rounded" alt="Meet" height="40" width="35"></a>
     <a href="#" style="color: white; float: right; padding-top: 10px;">My Account</a>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" style="float: right;">Friend Request</button>
+    <button type="button" id="logout" class="btn btn-primary" style="float: right">Log out</button>
 
 <!--    <a href="#" style="color: white; float: right; padding-top: 10px;">Friend Request | </a>  -->
   </div>
@@ -59,3 +60,11 @@ mysqli_close ($connection);
     </div>
   </div>
 </div>
+
+<!--log out -->
+<script>
+$("#logout").click(function() {
+   <?php session_destroy();?>
+   window.location="../html/Login.php";
+});
+</script>
