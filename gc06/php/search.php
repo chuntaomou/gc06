@@ -22,4 +22,6 @@ if(isset($_POST['searchVal'])){
   $output="no input";
 }
 echo $output;
+
+mysqli_close($connection);
 ?>

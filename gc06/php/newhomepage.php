@@ -6,7 +6,7 @@ ini_set('error_reporting', E_ALL);
 <!DOCTYPE html>
 <?php
 $friendmayknowfirst_name=array('');
-$friendmayknowlast_name=array('');
+$friendmayknowid=array('');
 ?>
 <html lang="en">
 <head>
@@ -22,8 +22,14 @@ $friendmayknowlast_name=array('');
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- To check if user log in -->
   <?php require "../includes/checklogin.php";
   ?>
+
+  <!-- javascript for searchq() -->
   <script type="text/javascript">
   function searchq(){
     var searchTxt=$("input[name='search']").val();
@@ -37,11 +43,14 @@ $friendmayknowlast_name=array('');
 
 <body>
   <div class="container" style="background: #F8F8FF">
+    <!-- header -->
     <?php require '../includes/headbar.php';
     ?>
+
     <div class="row">
       <div class="col-sum-12" id="thebasic">
-        <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["username"]; ?></a>
+
+        <a href="../html/userProfile.html" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
@@ -80,35 +89,38 @@ $friendmayknowlast_name=array('');
           }else{
 
             while($row=mysqli_fetch_array($result)){
-              if($friendmayknowlast_name[0]==null){
-                $friendmayknowlast_name[0]=$row["last_name"];
+              if($friendmayknowfirst_name[0]==null){
+                $friendmayknowid[0]=$row["user_id"];
                 $friendmayknowfirst_name[0]=$row["first_name"];
               }else{
-                $friendmayknowlast_name[]=$row["last_name"];
+                $friendmayknowid[]=$row["user_id"];
                 $friendmayknowfirst_name[]=$row["first_name"];
               }
             }
 
           }
+
           mysqli_close($connection);
-          foreach($friendmayknowfirst_name as $friendfirst_name){
+          $count=0;
+          foreach($friendmayknowid as $friendid){
             echo "
-            <div id='$friendfirst_name'>
+            <div id='$friendid'>
 
             <img
             src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
             width='40' height='40'>
             <div id='friendbutton'>
-            <button id='$friendfirst_name' class='addfriend'>Add Friend</button>
+            <button id='$friendid' class ='addfriend'>Add Friend</button>
             </div>
             <div id='ignorebutton'>
-            <button id='$friendfirst_name' class ='ignorebutton'>Ignore</button>
+            <button id='$friendid' class ='ignorebutton'>Ignore</button>
             </div>
             <div id='name'>
-              $friendfirst_name
+              $friendmayknowfirst_name[$count]
             </div>
             </div>
             ";
+            $count=$count+1;
           }
           ?>
         </div>
@@ -160,31 +172,26 @@ $friendmayknowlast_name=array('');
         </div>
       </div>
     </div>
+
   <script>
    $(".addfriend").click(function() {
+    var friendid = this.id;
     alert(this.id); // or alert($(this).attr('id'));
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
+           //post the friend request data to the database
+             $.post("../php/addfriend.php",{friendid},
+               function(data){
+              alert(data)
+            })
    });
 
   $(".ignorebutton").click(function()  {
     alert(this.id);
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
-  })
-    /*
-    function add(){
-      console.log("add");
-        var elem = document.getElementsByClassName('test');
-        elem.parentElement.removeChild(elem);
-    }
-    */
-    function ignore(){
-      console.log("ignore");
-
-    }
+  });
 </script>
-
 
   <?php require '../includes/footer.php';
   ?>

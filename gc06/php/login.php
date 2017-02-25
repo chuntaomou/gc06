@@ -20,7 +20,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL))
  }
 else
  {//matching user input email and password with stored email and password in database
-  $query="SELECT * FROM user_login WHERE user_name='$email' AND pass_word='$password'";
+  $query="SELECT * FROM user_login WHERE user_name='$email' AND pass_word=SHA('$password')";
   //$query="SELECT * FROM user_login";
 	$result = mysqli_query($connection,$query);
   $row = mysqli_fetch_array($result);
@@ -33,6 +33,16 @@ else
 	{
 		echo "Successfully Logged in...";
     $_SESSION["username"]=$row["user_name"];
+    $_SESSION["userid"]=$row["user_id"];
+    $userid = $_SESSION["userid"];
+    //get the user firstname and lastname
+    $query="SELECT * FROM user_detail WHERE user_id = '$userid' ";
+    $result = mysqli_query($connection,$query);
+    $row = mysqli_fetch_array($result);
+    $_SESSION["firstname"]=$row["first_name"];
+    $_SESSION["lastname"]=$row["last_name"];
+
+
 	}
  }
 
