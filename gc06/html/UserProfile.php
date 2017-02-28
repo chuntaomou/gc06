@@ -114,9 +114,9 @@ if(isset($_POST["upload"])){
 
                   if($row["profile_pic"]==NULL){
                     echo "sdaf";
-                    echo "<img src='../img/user.png' class='img-thumbnail' alt=''>";
+                    echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";
                   }else{
-                    echo "<img src='../images/".$row["profile_pic"]."' class='img-thumbnail' alt=''>";
+                    echo "<img src='../images/".$row["profile_pic"]."' style='height:229px;' class='img-thumbnail' alt=''>";
                   }
                   mysqli_close($connection);
                   ?>

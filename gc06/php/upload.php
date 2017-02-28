@@ -9,6 +9,14 @@ $image=$_FILES["image"]["name"];
 $id=$_SESSION["userid"];
 
 $query="UPDATE user_detail SET profile_pic='$image' WHERE user_id='$id'";
+$querydelete="SELECT * FROM user_detail WHERE user_id='$id'";
+$result2=mysqli_query($connection,$querydelete);
+if($result2!=null){
+  $row=mysqli_fetch_array($result2);
+  echo $row["profile_pic"];
+  $file="../images/{$row['profile_pic']}";
+  unlink($file);
+}
 $result=mysqli_query($connection,$query);
 if($result==null){
   echo "asdf";

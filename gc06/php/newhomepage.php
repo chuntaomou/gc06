@@ -11,6 +11,7 @@ $friendmayknowid=array('');
 
 
 <?php
+/*
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
 $msg="";
@@ -31,7 +32,7 @@ if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
 }else{
   $msg="There was a problem uploading image";
 }
-
+*/
 ?>
 
 
