@@ -1,39 +1,14 @@
 
 <?php
+session_start();
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
-session_start();
 ?>
 
 <!---  php for uploading photots the uploaded photos are stored in ../images/  ---->
 
 <?php
-/*
-echo $_POST["upload"];
-if(isset($_POST["upload"])){
-  $msg="";
-  $target="../images/".basename($_FILES["image"]["name"]);
-  $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-  $image=$_FILES["image"]["name"];
-  $id=$_SESSION["userid"];
-  echo $image;
-  echo $id;
-  $query="UPDATE user_detail SET profile_pic='$image' WHERE user_id='$id'";
-  //$query="INSERT INTO user_detail (profile_pic) VALUES ('$image') WHERE user_id='$id'";
-  $result=mysqli_query($connection,$query) or die ("fail to insert name of photo into database");
-  if($result==null){
-    echo "asdf";
-  }
 
-  if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
-    $msg="Image uploaded successfully";
-  }else{
-    $msg="There was a problem uploading image";
-  }
-
-  mysqli_close($connection);
-}
-*/
 ?>
 
 

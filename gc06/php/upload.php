@@ -24,8 +24,10 @@ if($result==null){
 
 if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
   $msg="Image uploaded successfully";
+  echo $msg;
+  echo "upload sucessfully, please go back";
+  echo "<script>window.location='../html/UserProfile.php';</script>";
 }else{
   $msg="There was a problem uploading image";
 }
- echo "upload sucessfully, please go back"
 ?>
