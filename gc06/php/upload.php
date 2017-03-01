@@ -21,7 +21,7 @@ $result=mysqli_query($connection,$query);
 if($result==null){
   echo "asdf";
 }
-
+ mysqli_close ($connection);
 if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
   $msg="Image uploaded successfully";
   echo $msg;
