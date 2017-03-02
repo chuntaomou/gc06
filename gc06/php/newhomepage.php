@@ -51,7 +51,7 @@ $friendmayknowid=array('');
     ?>
 
     <div class="row">
-      <div class="col-sum-12" id="thebasic">
+      <div class="col-12" id="thebasic">
 
         <a href="../html/userProfile.php" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
         <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
