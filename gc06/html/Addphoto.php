@@ -30,7 +30,7 @@ session_start();
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="newhomepage.php">Home</a></li>
+          <li class="active"><a href="../php/newhomepage.php">Home</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -48,13 +48,12 @@ session_start();
                   <h3 class="panel-title">Upload photo</h3>
                 </div>
                 <div class="panel-body">
-                  <form>
+                  <form method="post" action="../php/addphoto.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <textarea class="form-control" placeholder="title for your photo"></textarea>
                     </div>
-                    <button class="btn btn-default">Add from system</button>
-                  </form>
-                  <form>
+                    <input type="file" name="image" value="Add from system" class="btn btn-default">
+                    <!--<button class="btn btn-default" type="file">Add from system</button>-->
                     <div class="form-group">
                       <textarea class="form-control" style="height: 100px;" placeholder="you can add some text here for your photo"></textarea>
                     </div>

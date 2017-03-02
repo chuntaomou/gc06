@@ -1,39 +1,14 @@
 
 <?php
+session_start();
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
-session_start();
 ?>
 
 <!---  php for uploading photots the uploaded photos are stored in ../images/  ---->
 
 <?php
-/*
-echo $_POST["upload"];
-if(isset($_POST["upload"])){
-  $msg="";
-  $target="../images/".basename($_FILES["image"]["name"]);
-  $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-  $image=$_FILES["image"]["name"];
-  $id=$_SESSION["userid"];
-  echo $image;
-  echo $id;
-  $query="UPDATE user_detail SET profile_pic='$image' WHERE user_id='$id'";
-  //$query="INSERT INTO user_detail (profile_pic) VALUES ('$image') WHERE user_id='$id'";
-  $result=mysqli_query($connection,$query) or die ("fail to insert name of photo into database");
-  if($result==null){
-    echo "asdf";
-  }
 
-  if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
-    $msg="Image uploaded successfully";
-  }else{
-    $msg="There was a problem uploading image";
-  }
-
-  mysqli_close($connection);
-}
-*/
 ?>
 
 
@@ -114,9 +89,9 @@ if(isset($_POST["upload"])){
 
                   if($row["profile_pic"]==NULL){
                     echo "sdaf";
-                    echo "<img src='../img/user.png' class='img-thumbnail' alt=''>";
+                    echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";
                   }else{
-                    echo "<img src='../images/".$row["profile_pic"]."' class='img-thumbnail' alt=''>";
+                    echo "<img src='../images/".$row["profile_pic"]."' style='height:229px;' class='img-thumbnail' alt=''>";
                   }
                   mysqli_close($connection);
                   ?>
