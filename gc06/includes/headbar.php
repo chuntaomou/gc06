@@ -36,11 +36,13 @@ if($count==0){
 mysqli_close ($connection);
 ?>
 <div class="row">
-  <div class="col-sm-12" style="background-color:#3b5998;">
-    <a href="homepage.php"><img src="../Icons/logo.png" class="img-rounded" alt="Meet" height="40" width="35"></a>
-    <a href="#" style="color: white; float: right; padding-top: 10px;">My Account</a>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" style="float: right;">Friend Request</button>
-    <button type="button" id="logout" class="btn btn-primary" style="float: right">Log out</button>
+  <div class="col-sm-12" style="background-color:#4267b2;">
+    <a href="homepage.php"><img src="../Icons/logo.png" class="img-rounded" alt="Meet"></a>
+    <div class="buttons-in-header pull-right">
+    <a href="#" style="color: white;">My Account</a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" >Friend Request</button>
+    <button type="button" id="logout" class="btn btn-primary" >Log out</button>
+  </div>
 
 <!--    <a href="#" style="color: white; float: right; padding-top: 10px;">Friend Request | </a>  -->
   </div>
