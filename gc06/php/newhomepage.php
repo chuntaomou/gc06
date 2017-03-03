@@ -57,12 +57,12 @@ $friendmayknowid=array('');
         <form class="pull-right" action="" method="post">
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
+      <div id="output" >
+      </div>
         </form>
       </div>
     </div>
 
-      <div class="pull-right" id="output" >
-      </div>
     <nav class="nav navbar-default">
       <div class="navbar-header">
         <button type="button" class="pull-left navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

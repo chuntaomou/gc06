@@ -11,8 +11,19 @@
 }
 
 #output{
-  position:absolute ;
-  background-color: #ffffff;
+  display: block;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  float: right;
+  min-width: 160px;
+
+  margin: 2px 0 0; // override default ul
+  list-style: none;
+  text-align: left;
+  .box-shadow(0 6px 12px rgba(0,0,0,.175));
+  background-clip: padding-box;
+
 }
 
 #friendbutton{
@@ -221,4 +232,12 @@
 
 #statusbar {
   margin-bottom: 50px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width:inherit;
+  /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
 }
