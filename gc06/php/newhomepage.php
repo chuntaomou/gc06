@@ -20,6 +20,7 @@ $friendmayknowid=array('');
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="../css/homepage-css.css" rel="stylesheet" type="text/css">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
 
 
   <!-- jquery -->
@@ -42,15 +43,18 @@ $friendmayknowid=array('');
   }
   </script>
 
+
+
+
 </head>
 
 <body>
-  <div class="container" style="background: #F8F8FF">
+  <div class="container" style="background: #F8F8FF; padding:0px;">
     <!-- header -->
     <?php require '../includes/headbar.php';
     ?>
 
-    <div class="row">
+    <div class="row" style="margin:0px;">
       <div class="col-12" id="thebasic">
 
         <a href="../html/userProfile.php">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
@@ -72,7 +76,7 @@ $friendmayknowid=array('');
           <span class="icon-bar"></span>
         </button>
       </div>
-    <div class="navbar-collapse collapse" >
+    <div class="navbar-collapse collapse" style="padding:0px;">
       <ul class="nav nav-tabs nav-justified">
         <li>
           <a href="../html/addtext.php" style="text-center">Add Text</a>
@@ -86,7 +90,7 @@ $friendmayknowid=array('');
       </ul>
     </div>
   </nav>
-    <div class="row">
+    <div class="row" style="margin:0px;">
       <div class="col-md-4" style="background-color: white;">
         <div id="friendmayknowcol">
 
@@ -137,53 +141,89 @@ $friendmayknowid=array('');
           ?>
         </div>
       </div>
-      <div class="col-md-7" id="statusbar"
 
-      style="background-color: white;">
-        <div id="statuscol">
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="80" height="60">
-          </div>
-          <div class="u_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_time">
-            18 hours ago
-          </div>
-        </div>
-        <div id="u_content">
-          <div class="u_textorphoto">
-            it snows outside!<br>
-            it's so beautiful!
-          </div>
-        </div>
-          <div class="u_commentbar">
-            <a href="#" id="like" style="text-decoration:none;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>Like</a>
-            <a href="#" id="comment" style="text-decoration:none;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Comment</a>
-            <a href="#" id="share" style="text-decoration:none;"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Share</a>
-          </div>
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="50px" height="50px">
-          </div>
-          <div class="u_c_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_c_comment">
-            first comment belongs to myself
-          </div>
-          <div class="u_c_date">
-            17 hours ago
-          </div>
-          <div class="u_response">
-            <a href="#" style="text-decoration:none;"><span>Like</span></a>
-            <a href="#" style="text-decoration:none;"><span>Reply</span></a>
-          </div>
-        </div>
-        </div>
+      <div class="col-sm-7 col-sm-offset-1" >
+        <?php
+        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+        $id=$_SESSION["userid"];
+        $query="SELECT * FROM photo_detail";
+        $result=mysqli_query($connection,$query) or die("fail to execute query");
+        $count=mysqli_num_rows($result);
+
+        if($count>=1){
+          while($row=mysqli_fetch_array($result)){
+            $photo_id=$row["photo_id"];
+            $postid=$row["posted_by_user_id"];
+            $photo=$row["photo_url"];
+            $text=$row["photo_content"];
+            $query2="SELECT * FROM user_detail WHERE user_id='$postid'";
+            $result2=mysqli_query($connection,$query2);
+            $row2=mysqli_fetch_array($result2);
+            $userimage=$row2["profile_pic"];
+            $username=$row2["first_name"];
+            echo "
+            <div id='statuscol'>
+            <div class='row'>
+              <div class='row' id='u_info'>
+              <div class='u_image'>
+                <img src='../images/{$userimage}'
+                >
+              </div>
+              <div class='u_name'>
+                <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
+              </div>
+              <div class='u_time pull-right'>
+                18 hours ago
+              </div>
+            </div>
+            <div id='u_content'>
+              <div class='u_textorphoto'>
+                <img src='../uploads/{$photo}' style='height:229px;' class='img-thumbnail' alt=''>
+                {$text}
+              </div>
+            </div>
+              <div class='u_commentbar btn-group btn-group-justified' role='group'>
+              <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default' id='Like'>Like</button></div>
+                <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default commentform' id='$photo_id'>Comment</button></div>
+                  <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default' id='share'>Share</button></div>
+              </div>
+              <div id='commentform$photo_id'>
+              <form>
+              <textarea class='form-control' id='content$photo_id' cols='60' style='height: 55px;' placeholder='Add Comments ....'></textarea>
+              </form>
+              <button class='btn btn-default photocomment' id='$photo_id'>Submit</button>
+              <button class='btn btn-default cancelform' id='$photo_id'>Cancel</button>
+              </div>
+              <div id='u_info'>
+              <div class='u_image'>
+                <img src='https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg'
+                width='50' height='50'>
+              </div>
+              <div class='u_c_name'>
+                <a href='' style='text-decoration:none; color:#076abf;' >Emma</a>
+              </div>
+              <div class='u_c_comment'>
+                first comment belongs to myself
+              </div>
+              <div class='u_c_date'>
+                17 hours ago
+              </div>
+              <div class='u_response'>
+                <a href='#' style='text-decoration:none;'><span>Like</span></a>
+                <a href='#' style='text-decoration:none;'><span>Reply</span></a>
+              </div>
+            </div>
+            </div>
+            </div>
+            ";
+          }
+        }
+        mysqli_close($connection);
+
+        ?>
       </div>
     </div>
 
@@ -205,8 +245,35 @@ $friendmayknowid=array('');
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
   });
+
+  $(".commentform").click(function(){
+    var id=this.id;
+    $("#commentform"+id).show();
+  });
+
+  $(".cancelform").click(function(){
+    var id=this.id;
+    $("#commentform"+id).hide();
+  });
+
+  $(".photocomment").click(function(){
+    var id=this.id;
+    var content=$("#content"+id).val();
+
+    if(content.length>0){
+      $.post("../php/photocomment.php",{photoid:id,text:content},function(data){
+        //do nothing
+      });
+      $("#commentform"+id).hide();
+    }else{
+      alert("no comment input !");
+    }
+
+  });
 </script>
 
+<br>
+<br>
   <?php require '../includes/footer.php';
   ?>
   </div>

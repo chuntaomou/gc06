@@ -89,41 +89,29 @@
 }
 .u_image{
 
-  float: left;
-
-  margin-left:10px;
-
-  margin-top: 5px;
+  vertical-align: middle;
+display: inline-block;
 
 }
 
 .u_name{
 
-  float: left;
-
-  margin-left: 10px;
-
-  margin-top: 10px;
-
-  font-size: 30px;
-
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .u_time{
 
-  float: right;
-
-  margin-top: 20px;
-
-  margin-right: 10px;
+vertical-align: middle;
+display: inline-block;
 
 }
 
 #u_info{
 
   border: 1px solid #73AD21;
+  margin: 0px;
 
-  height: 65px;
 
 }
 
@@ -151,23 +139,7 @@
 
 }
 
-#like{
 
-  margin-left: 100px;
-
-}
-
-#comment{
-
-  margin-left: 100px;
-
-}
-
-#share{
-
-  margin-left: 100px;
-
-}
 
 .u_c_image{
 
@@ -232,12 +204,4 @@
 
 #statusbar {
   margin-bottom: 50px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width:inherit;
-  /* Set the fixed height of the footer here */
-  background-color: #f5f5f5;
 }
