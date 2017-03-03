@@ -43,6 +43,9 @@ $friendmayknowid=array('');
   }
   </script>
 
+
+
+
 </head>
 
 <body>
@@ -87,7 +90,7 @@ $friendmayknowid=array('');
       </ul>
     </div>
   </nav>
-    <div class="row">
+    <div class="row" style="margin:0px;">
       <div class="col-md-4" style="background-color: white;">
         <div id="friendmayknowcol">
 
