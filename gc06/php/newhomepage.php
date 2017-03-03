@@ -137,55 +137,7 @@ $friendmayknowid=array('');
           ?>
         </div>
       </div>
-<<<<<<< HEAD
-      <div class="col-md-7" id="statusbar"
 
-      style="background-color: white;">
-        <div id="statuscol">
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="80" height="60">
-          </div>
-          <div class="u_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_time">
-            18 hours ago
-          </div>
-        </div>
-        <div id="u_content">
-          <div class="u_textorphoto">
-            it snows outside!<br>
-            it's so beautiful!
-          </div>
-        </div>
-          <div class="u_commentbar">
-            <a href="#" id="like" style="text-decoration:none;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>Like</a>
-            <a href="#" id="comment" style="text-decoration:none;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Comment</a>
-            <a href="#" id="share" style="text-decoration:none;"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Share</a>
-          </div>
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="50px" height="50px">
-          </div>
-          <div class="u_c_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_c_comment">
-            first comment belongs to myself
-          </div>
-          <div class="u_c_date">
-            17 hours ago
-          </div>
-          <div class="u_response">
-            <a href="#" style="text-decoration:none;"><span>Like</span></a>
-            <a href="#" style="text-decoration:none;"><span>Reply</span></a>
-          </div>
-        </div>
-        </div>
-=======
       <div class="col-sm-7" style="background-color: white; height: 1000px; float: right; margin-right: 40px; margin-top: 15px; margin-botton: 15px;">
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
