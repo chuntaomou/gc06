@@ -272,6 +272,8 @@ $friendmayknowid=array('');
   });
 </script>
 
+<br>
+<br>
   <?php require '../includes/footer.php';
   ?>
   </div>
