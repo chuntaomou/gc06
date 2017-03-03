@@ -8,8 +8,9 @@ $target="../uploads/".basename($_FILES["image"]["name"]);
 $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
 $image=$_FILES["image"]["name"];
 $id=$_SESSION["userid"];
+$text=$_POST["text"];
 
-$query="INSERT INTO photo_detail (photo_url,posted_by_user_id) VALUES ('$image','$id')";
+$query="INSERT INTO photo_detail (photo_url,posted_by_user_id,photo_content) VALUES ('$image','$id','$text')";
 mysqli_query($connection,$query) or die("fail to insert");
 mysqli_close($connection);
 if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
