@@ -20,6 +20,7 @@ $friendmayknowid=array('');
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="../css/homepage-css.css" rel="stylesheet" type="text/css">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
 
 
   <!-- jquery -->
@@ -45,12 +46,12 @@ $friendmayknowid=array('');
 </head>
 
 <body>
-  <div class="container" style="background: #F8F8FF">
+  <div class="container" style="background: #F8F8FF; padding:0px;">
     <!-- header -->
     <?php require '../includes/headbar.php';
     ?>
 
-    <div class="row">
+    <div class="row" style="margin:0px;">
       <div class="col-12" id="thebasic">
 
         <a href="../html/userProfile.php">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
@@ -72,7 +73,7 @@ $friendmayknowid=array('');
           <span class="icon-bar"></span>
         </button>
       </div>
-    <div class="navbar-collapse collapse" >
+    <div class="navbar-collapse collapse" style="padding:0px;">
       <ul class="nav nav-tabs nav-justified">
         <li>
           <a href="../html/addtext.php" style="text-center">Add Text</a>
@@ -138,7 +139,7 @@ $friendmayknowid=array('');
         </div>
       </div>
 
-      <div class="col-sm-7" style="background-color: white; height: 1000px; float: right; margin-right: 40px; margin-top: 15px; margin-botton: 15px;">
+      <div class="col-sm-7 col-sm-offset-1" >
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
         $id=$_SESSION["userid"];
@@ -159,15 +160,16 @@ $friendmayknowid=array('');
             $username=$row2["first_name"];
             echo "
             <div id='statuscol'>
-              <div id='u_info'>
+            <div class='row'>
+              <div class='row' id='u_info'>
               <div class='u_image'>
                 <img src='../images/{$userimage}'
-                width='80' height='60'>
+                >
               </div>
               <div class='u_name'>
                 <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
               </div>
-              <div class='u_time'>
+              <div class='u_time pull-right'>
                 18 hours ago
               </div>
             </div>
@@ -177,10 +179,13 @@ $friendmayknowid=array('');
                 {$text}
               </div>
             </div>
-              <div class='u_commentbar'>
-                <button class='btn btn-default' id='Like'>Like</button>
-                <button class='btn btn-default commentform' id='$photo_id'>Comment</button>
-                <button class='btn btn-default' id='share'>Share</button>
+              <div class='u_commentbar btn-group btn-group-justified' role='group'>
+              <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default' id='Like'>Like</button></div>
+                <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default commentform' id='$photo_id'>Comment</button></div>
+                  <div class='btn-group' role='group'>
+                <button type='button' class='btn btn-default' id='share'>Share</button></div>
               </div>
               <div id='commentform$photo_id'>
               <form>
@@ -207,6 +212,7 @@ $friendmayknowid=array('');
                 <a href='#' style='text-decoration:none;'><span>Like</span></a>
                 <a href='#' style='text-decoration:none;'><span>Reply</span></a>
               </div>
+            </div>
             </div>
             </div>
             ";
