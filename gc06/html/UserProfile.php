@@ -7,7 +7,13 @@ ini_set('error_reporting', E_ALL);
 
 <!---  php for uploading photots the uploaded photos are stored in ../images/  ---->
 
+<<<<<<< HEAD
 
+=======
+<?php
+
+?>
+>>>>>>> a67d5a0d04913ffbb01191dd3cd5c705dada30e4
 
 
 

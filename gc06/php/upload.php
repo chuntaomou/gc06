@@ -21,12 +21,22 @@ $result=mysqli_query($connection,$query);
 if($result==null){
   echo "asdf";
 }
-
+ mysqli_close ($connection);
 if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
+<<<<<<< HEAD
    echo '<script> window.location ="../html/UserProfile.php"; </script>';
 
 }else{
   $msg="There was a problem uploading image";
 }
 
+=======
+  $msg="Image uploaded successfully";
+  echo $msg;
+  echo "upload sucessfully, please go back";
+  echo "<script>window.location='../html/UserProfile.php';</script>";
+}else{
+  $msg="There was a problem uploading image";
+}
+>>>>>>> a67d5a0d04913ffbb01191dd3cd5c705dada30e4
 ?>

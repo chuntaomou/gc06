@@ -51,12 +51,21 @@ session_start();
           <div class="col-md-8">
             <h1 class="page-header">Friends</h1>
             <ul class="photos gallery-parent">
-              <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
+              <div class="row">
+               <?php
+                include "../php/friends.php";
+
+               ?>
+             </div>
+
+
+            <!--  <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
               <li><a href="../img/sample2.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
               <li><a href="../img/sample3.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
               <li><a href="../img/sample4.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
               <li><a href="../img/sample5.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
               <li><a href="../img/sample6.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/user.png" class="img-thumbnail" alt=""></a></li>
+            -->
             </ul>
           </div>
           <div class="col-md-4">

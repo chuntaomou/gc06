@@ -10,7 +10,7 @@ $friendid=$_SESSION["userid"];
 
 
  $query = "UPDATE friends_list SET status='friend' WHERE user_id='$userid' AND friend_id='$friendid'";
- $result = mysqli_query($connection, $query) or die('Error making select users query'.mysql_error());
+ $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
 
 
 if ($result) {

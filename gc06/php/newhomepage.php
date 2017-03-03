@@ -9,33 +9,6 @@ $friendmayknowfirst_name=array('');
 $friendmayknowid=array('');
 ?>
 
-
-<?php
-/*
-ini_set('display_errors', '1');
-ini_set('error_reporting', E_ALL);
-$msg="";
-$target="../images/".basename($_FILES["image"]["name"]);
-$connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-$image=$_FILES["image"]["name"];
-$id=$_SESSION["userid"];
-echo $image;
-echo $id;
-$query="UPDATE user_detail SET profile_pic='$image' WHERE user_id='$id'";
-$result=mysqli_query($connection,$query);
-if($result==null){
-  echo "asdf";
-}
-
-if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
-  $msg="Image uploaded successfully";
-}else{
-  $msg="There was a problem uploading image";
-}
-*/
-?>
-
-
 <html lang="en">
 <head>
   <title>GC06 - Home</title>
@@ -95,7 +68,7 @@ if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
           <a href="../html/addtext.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Text</a>
         </div>
         <div class="col-sm-4">
-          <a href="../html/addphoto.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
+          <a href="../html/Addphoto.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Photo</a>
         </div>
         <div class="col-sm-4">
           <a href="../html/addblog.php" style="text-decoration:none; color: white; font-size: 25px; padding-left: 175px; text-center">Add Blog</a>
@@ -154,50 +127,82 @@ if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
         </div>
       </div>
       <div class="col-sm-7" style="background-color: white; height: 1000px; float: right; margin-right: 40px; margin-top: 15px; margin-botton: 15px;">
-        <div id="statuscol">
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="80" height="60">
-          </div>
-          <div class="u_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_time">
-            18 hours ago
-          </div>
-        </div>
-        <div id="u_content">
-          <div class="u_textorphoto">
-            it snows outside!<br>
-            it's so beautiful!
-          </div>
-        </div>
-          <div class="u_commentbar">
-            <a href="#" id="like" style="text-decoration:none;"><span><img src="../Icons/likeicon.png" height="45" width="45">Like</span></a>
-            <a href="#" id="comment" style="text-decoration:none;"><span><img src="../Icons/commenticon.png" height="25" width="20">Comment</span></a>
-            <a href="#" id="share" style="text-decoration:none;"><span><img src="../Icons/shareicon.png" height="25" width="20">Share</span></a>
-          </div>
-          <div id="u_info">
-          <div class="u_image">
-            <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="50" height="50">
-          </div>
-          <div class="u_c_name">
-            <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
-          </div>
-          <div class="u_c_comment">
-            first comment belongs to myself
-          </div>
-          <div class="u_c_date">
-            17 hours ago
-          </div>
-          <div class="u_response">
-            <a href="#" style="text-decoration:none;"><span>Like</span></a>
-            <a href="#" style="text-decoration:none;"><span>Reply</span></a>
-          </div>
-        </div>
-        </div>
+        <?php
+        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+        $id=$_SESSION["userid"];
+        $query="SELECT * FROM photo_detail";
+        $result=mysqli_query($connection,$query) or die("fail to execute query");
+        $count=mysqli_num_rows($result);
+
+        if($count>=1){
+          while($row=mysqli_fetch_array($result)){
+            $photo_id=$row["photo_id"];
+            $postid=$row["posted_by_user_id"];
+            $photo=$row["photo_url"];
+            $text=$row["photo_content"];
+            $query2="SELECT * FROM user_detail WHERE user_id='$postid'";
+            $result2=mysqli_query($connection,$query2);
+            $row2=mysqli_fetch_array($result2);
+            $userimage=$row2["profile_pic"];
+            $username=$row2["first_name"];
+            echo "
+            <div id='statuscol'>
+              <div id='u_info'>
+              <div class='u_image'>
+                <img src='../images/{$userimage}'
+                width='80' height='60'>
+              </div>
+              <div class='u_name'>
+                <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
+              </div>
+              <div class='u_time'>
+                18 hours ago
+              </div>
+            </div>
+            <div id='u_content'>
+              <div class='u_textorphoto'>
+                <img src='../uploads/{$photo}' style='height:229px;' class='img-thumbnail' alt=''>
+                {$text}
+              </div>
+            </div>
+              <div class='u_commentbar'>
+                <button class='btn btn-default' id='Like'>Like</button>
+                <button class='btn btn-default commentform' id='$photo_id'>Comment</button>
+                <button class='btn btn-default' id='share'>Share</button>
+              </div>
+              <div id='commentform$photo_id'>
+              <form>
+              <textarea class='form-control' id='content$photo_id' cols='60' style='height: 55px;' placeholder='Add Comments ....'></textarea>
+              </form>
+              <button class='btn btn-default photocomment' id='$photo_id'>Submit</button>
+              <button class='btn btn-default cancelform' id='$photo_id'>Cancel</button>
+              </div>
+              <div id='u_info'>
+              <div class='u_image'>
+                <img src='https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg'
+                width='50' height='50'>
+              </div>
+              <div class='u_c_name'>
+                <a href='' style='text-decoration:none; color:#076abf;' >Emma</a>
+              </div>
+              <div class='u_c_comment'>
+                first comment belongs to myself
+              </div>
+              <div class='u_c_date'>
+                17 hours ago
+              </div>
+              <div class='u_response'>
+                <a href='#' style='text-decoration:none;'><span>Like</span></a>
+                <a href='#' style='text-decoration:none;'><span>Reply</span></a>
+              </div>
+            </div>
+            </div>
+            ";
+          }
+        }
+        mysqli_close($connection);
+
+        ?>
       </div>
     </div>
 
@@ -218,6 +223,31 @@ if(move_uploaded_file($_FILES["image"]["tmp_name"],$target)){
     alert(this.id);
     var elem = document.getElementById(this.id);
     elem.parentElement.removeChild(elem);
+  });
+
+  $(".commentform").click(function(){
+    var id=this.id;
+    $("#commentform"+id).show();
+  });
+
+  $(".cancelform").click(function(){
+    var id=this.id;
+    $("#commentform"+id).hide();
+  });
+
+  $(".photocomment").click(function(){
+    var id=this.id;
+    var content=$("#content"+id).val();
+
+    if(content.length>0){
+      $.post("../php/photocomment.php",{photoid:id,text:content},function(data){
+        //do nothing
+      });
+      $("#commentform"+id).hide();
+    }else{
+      alert("no comment input !");
+    }
+
   });
 </script>
 
