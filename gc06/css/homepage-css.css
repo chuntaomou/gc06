@@ -1,6 +1,6 @@
 @charset "utf-8";
 #friendmayknowcol{
-  position: fixed;
+  position: relative;;
 
     border: 3px solid white;
 
@@ -8,8 +8,13 @@
 
     padding-left: 0px;
 
-    width: 24%;
 }
+
+#output{
+  position:absolute ;
+  background-color: #ffffff;
+}
+
 #friendbutton{
 
   position: relative;
@@ -201,4 +206,19 @@
 
   margin-left: 10px;
 
+}
+.nav-tabs{
+  background-color: #4267b2;
+}
+
+.nav-tabs a {
+  color: white;
+}
+
+.nav-tabs li a:hover{
+  background-color: #365899;
+}
+
+#statusbar {
+  margin-bottom: 50px;
 }

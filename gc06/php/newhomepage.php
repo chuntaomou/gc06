@@ -20,7 +20,7 @@ $friendmayknowid=array('');
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="../css/homepage-css.css" rel="stylesheet" type="text/css">
-  <link href="../css/newhomepage.css" rel="stylesheet">
+
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -61,7 +61,7 @@ $friendmayknowid=array('');
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2" id="output" style="float:right;">
+      <div class="pull-right" id="output" >
       </div>
     </div>
     <nav class="nav navbar-default">
@@ -88,7 +88,7 @@ $friendmayknowid=array('');
     </div>
   </nav>
     <div class="row">
-      <div class="col-sm-4" style="background-color: white; height: 1000px; margin-left: 40px; margin-top: 15px; margin-botton: 15px;">
+      <div class="col-md-4" style="background-color: white;">
         <div id="friendmayknowcol">
 
 
@@ -138,7 +138,9 @@ $friendmayknowid=array('');
           ?>
         </div>
       </div>
-      <div class="col-sm-7" style="background-color: white; height: 1000px; float: right; margin-right: 40px; margin-top: 15px; margin-botton: 15px;">
+      <div class="col-md-7" id="statusbar"
+
+      style="background-color: white;">
         <div id="statuscol">
           <div id="u_info">
           <div class="u_image">
@@ -159,14 +161,14 @@ $friendmayknowid=array('');
           </div>
         </div>
           <div class="u_commentbar">
-            <a href="#" id="like" style="text-decoration:none;"><span><img src="../Icons/likeicon.png" height="45" width="45">Like</span></a>
-            <a href="#" id="comment" style="text-decoration:none;"><span><img src="../Icons/commenticon.png" height="25" width="20">Comment</span></a>
-            <a href="#" id="share" style="text-decoration:none;"><span><img src="../Icons/shareicon.png" height="25" width="20">Share</span></a>
+            <a href="#" id="like" style="text-decoration:none;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>Like</a>
+            <a href="#" id="comment" style="text-decoration:none;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Comment</a>
+            <a href="#" id="share" style="text-decoration:none;"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Share</a>
           </div>
           <div id="u_info">
           <div class="u_image">
             <img src="https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg"
-            width="50" height="50">
+            width="50px" height="50px">
           </div>
           <div class="u_c_name">
             <a href="" style="text-decoration:none; color:#076abf;" >Emma</a>
