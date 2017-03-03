@@ -53,17 +53,16 @@ $friendmayknowid=array('');
     <div class="row">
       <div class="col-12" id="thebasic">
 
-        <a href="../html/userProfile.php" style="text-decoration: underline; font-size: 40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
-        <form style="float: right; padding-top: 20px; padding-bottom: 20px;" action="" method="post">
+        <a href="../html/userProfile.php">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
+        <form class="pull-right" action="" method="post">
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
         </form>
       </div>
     </div>
-    <div class="row">
+
       <div class="pull-right" id="output" >
       </div>
-    </div>
     <nav class="nav navbar-default">
       <div class="navbar-header">
         <button type="button" class="pull-left navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
