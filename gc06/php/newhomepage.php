@@ -215,7 +215,6 @@ $friendmayknowid=array('');
         mysqli_close($connection);
 
         ?>
->>>>>>> loulou
       </div>
     </div>
 
