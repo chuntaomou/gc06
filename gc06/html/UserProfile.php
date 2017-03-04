@@ -59,7 +59,7 @@ ini_set('error_reporting', E_ALL);
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="../php/newhomepage.php">Home</a></li>
-            <li><a href="../html/friends.html">Friends</a></li>
+            <li><a href="../html/Friends.php">Friends</a></li>
             <li><a href="../html/groups.html">Groups</a></li>
             <li><a href="../html/photos.html">Photos</a></li>
             <li><a href="../html/userProfile.html">Profile</a></li>

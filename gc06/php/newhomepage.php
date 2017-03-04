@@ -145,6 +145,7 @@ $friendmayknowid=array('');
         $query="SELECT * FROM photo_detail";
         $result=mysqli_query($connection,$query) or die("fail to execute query");
         $count=mysqli_num_rows($result);
+        $output="";
 
         if($count>=1){
           while($row=mysqli_fetch_array($result)){
@@ -157,7 +158,7 @@ $friendmayknowid=array('');
             $row2=mysqli_fetch_array($result2);
             $userimage=$row2["profile_pic"];
             $username=$row2["first_name"];
-            echo "
+            $output.="
             <div id='statuscol'>
               <div id='u_info'>
               <div class='u_image'>
@@ -189,28 +190,40 @@ $friendmayknowid=array('');
               <button class='btn btn-default photocomment' id='$photo_id'>Submit</button>
               <button class='btn btn-default cancelform' id='$photo_id'>Cancel</button>
               </div>
-              <div id='u_info'>
-              <div class='u_image'>
-                <img src='https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg'
-                width='50' height='50'>
-              </div>
-              <div class='u_c_name'>
-                <a href='' style='text-decoration:none; color:#076abf;' >Emma</a>
-              </div>
-              <div class='u_c_comment'>
-                first comment belongs to myself
-              </div>
-              <div class='u_c_date'>
-                17 hours ago
-              </div>
-              <div class='u_response'>
-                <a href='#' style='text-decoration:none;'><span>Like</span></a>
-                <a href='#' style='text-decoration:none;'><span>Reply</span></a>
-              </div>
-            </div>
-            </div>
             ";
+            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id'";
+            $resultcomment=mysqli_query($connection,$querycomment) or die("asdfasdf");
+            $countcomment=mysqli_num_rows($resultcomment);
+            if($countcomment>0){
+              while($rowcomment=mysqli_fetch_array($resultcomment)){
+                $commentid=$rowcomment["comment_by_user_id"];
+                $query3="SELECT * FROM user_detail WHERE user_id='$commentid'";
+                $result3=mysqli_query($connection,$query3);
+                $row3=mysqli_fetch_array($result3);
+                $commentimage=$row3["profile_pic"];
+                $commentcontent=$rowcomment["comment_content"];
+                $output.="
+                <div id='u_info'>
+                <div class='u_image'>
+                  <img src='../images/{$commentimage}'
+                  width='50' height='50'>
+                </div>
+                <div class='u_c_name'>
+                  <a href='' style='text-decoration:none; color:#076abf;' >Emma</a>
+                </div>
+                <div class='u_c_comment'>
+                  {$commentcontent}
+                </div>
+                <div class='u_c_date'>
+                  17 hours ago
+                </div>
+                </div>
+                ";
+              }
+            }
+            $output.="</div>";
           }
+          echo $output;
         }
         mysqli_close($connection);
 
