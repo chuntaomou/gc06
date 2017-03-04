@@ -18,6 +18,7 @@ if (mysqli_num_rows($result)!= 0){
       $query = "SELECT * from user_detail where user_id='$friendid' ";
       $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
       $row = mysqli_fetch_array($result);
+      $id = $row["user_id"];
       $name = $row["first_name"].$row["last_name"];
       if($row["profile_pic"]==NULL){
         $icon='../img/user.png';
@@ -33,7 +34,7 @@ if (mysqli_num_rows($result)!= 0){
             <div class="panel-body">
               <div class ="row">
                 <div class ="col-xs-8 col-md-4">
-                  <a href="#" class ="thumbail">
+                  <a href="../html/UserProfile.php?id='.$id.'" class ="thumbail">
                     <img src= '.$icon.' alt ="usericon">
                   </a>
                 </div>

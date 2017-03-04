@@ -39,7 +39,7 @@ session_start();
           <li><a href="Friends.php">Friends</a></li>
           <li><a href="Groups.php">Groups</a></li>
           <li><a href="Photos.php">Photos</a></li>
-          <li><a href="UserProfile.php">Profile</a></li>
+          <li><a href="UserProfile1.php">Profile</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

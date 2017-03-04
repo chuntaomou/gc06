@@ -7,14 +7,6 @@ ini_set('error_reporting', E_ALL);
 
 <!---  php for uploading photots the uploaded photos are stored in ../images/  ---->
 
-<<<<<<< HEAD
-
-=======
-<?php
-
-?>
->>>>>>> a67d5a0d04913ffbb01191dd3cd5c705dada30e4
-
 
 
 <!DOCTYPE html>
@@ -34,21 +26,25 @@ ini_set('error_reporting', E_ALL);
    <link href="../css/style.css" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+   <?php require "../includes/checklogin.php";
+   ?>
+
    <script type="text/javascript">
    $(document).ready(function(){
       //var username;
         $.get("../php/userProfile.php",function(data){
           var username=data;
-          $("#username").append(username);
+          $("#username").append(username);   //get username
         });
 });
    </script>
+
 </head>
 
-
   <body>
-    <?php require "../includes/checklogin.php";
-    ?>
+    <?php
+  
+   ?>
 
     <nav class="navbar navbar-default">
       <div class="container">
