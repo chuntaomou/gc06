@@ -42,10 +42,6 @@ ini_set('error_reporting', E_ALL);
 </head>
 
   <body>
-    <?php
-  
-   ?>
-
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
