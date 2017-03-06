@@ -25,17 +25,17 @@ if($count==0){
     src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
     width='40' height='40'>
     <div id='friendbutton'>
-    <button id='$requestid' class ='acceptfriend'>accept</button>
+    <button type='button' id='$requestid' class ='btn btn-primary acceptfriend'>accept</button>
     </div>
     <div id='ignorebutton'>
-    <button id='$requestid' class ='ignorebutton'>Ignore</button>
+    <button type='button' id='$requestid' class ='btn btn-primary ignorebutton'>Ignore</button>
     </div>
     <div id='id'>".$requestfirstname." ".$requestlastname."</div></div>";
   }
 }
 mysqli_close ($connection);
 ?>
-<div class="row center-block" style="background-color:#416ec7">
+<div class="row center-block" style="background-color:#536c9c">
 
     <a href="homepage.php"><img src="../img/logo.jpg" class="img-rounded" alt="Meet"></a>
     <div class="buttons-in-header pull-right">

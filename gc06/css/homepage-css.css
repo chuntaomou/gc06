@@ -30,11 +30,8 @@
 
   position: relative;
 
-  float: right;
 
-  padding-top: 10px;
 
-  padding-right: 10px;
 
 }
 
@@ -42,11 +39,6 @@
 
   position: relative;
 
-  float: right;
-
-  padding-top: 10px;
-
-  padding-right: 10px;
 
 }
 
@@ -196,4 +188,8 @@ background-color:inherit;;
 
 #timeinstatus{
   vertical-align: middle;
+}
+
+#name{
+  display: inline-block;
 }
