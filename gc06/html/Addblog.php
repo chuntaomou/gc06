@@ -29,7 +29,7 @@ session_start();
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="newhomepage.php">Home</a></li>
+          <li class="active"><a href="../php/newhomepage.php">Home</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -47,18 +47,16 @@ session_start();
                   <h3 class="panel-title">Record your life</h3>
                 </div>
                 <div class="panel-body">
-                  <form>
+                  <form method="post" action="../php/addblog.php">
                     <div class="form-group">
-                      <textarea class="form-control" placeholder="title for your blog"></textarea>
+                      <textarea class="form-control" name="title" placeholder="title for your blog"></textarea>
                     </div>
-                  </form>
-                  <form>
                     <div class="form-group">
-                      <textarea class="form-control" style="height: 400px;" placeholder="content for your blog"></textarea>
+                      <textarea class="form-control" style="height: 400px;" name="content" placeholder="content for your blog"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default" >Submit</button>
                     <div class="pull-right">
-                      <button type="submit" class="btn btn-default">Cancel</button>
+                      <button type="submit" class="btn btn-default" >Cancel</button>
                     </div>
                   </form>
                 </div>
@@ -97,5 +95,11 @@ session_start();
       </div>
     </div>
   </section>
+    <script>
+      $(".submit").click(function(){
+          $.post
+
+      })
+    </script>
 </body>
 </html>

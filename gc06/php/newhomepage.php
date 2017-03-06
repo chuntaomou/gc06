@@ -57,8 +57,11 @@ $friendmayknowid=array('');
     <div class="row" style="margin:0px;">
       <div class="col-12" id="thebasic">
 
-        <a href="../html/userProfile.php" style="font-size:40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
+
+        <a href="../html/userProfile1.php" style="font-size:40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
         <form class="pull-right" action="" method="post" id="searchbox" style="margin-top:20px">
+
+
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
       <div id="output" >

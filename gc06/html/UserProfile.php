@@ -7,10 +7,6 @@ ini_set('error_reporting', E_ALL);
 
 <!---  php for uploading photots the uploaded photos are stored in ../images/  ---->
 
-<?php
-
-?>
-
 
 
 <!DOCTYPE html>
@@ -30,24 +26,31 @@ ini_set('error_reporting', E_ALL);
    <link href="../css/style.css" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+   <?php require "../includes/checklogin.php";
+   ?>
+
    <script type="text/javascript">
    $(document).ready(function(){
       //var username;
         $.get("../php/userProfile.php",function(data){
           var username=data;
-          $("#username").append(username);
+          $("#username").append(username);   //get username
         });
 });
    </script>
+
 </head>
 
-
   <body>
+
     <?php require "../includes/checklogin.php";
     ?>
 
     <?php require "../includes/headerforotherpages.php";
     ?>
+
+
+
     <section>
       <div class="container">
         <div class="row">
@@ -64,7 +67,7 @@ ini_set('error_reporting', E_ALL);
                   $result=mysqli_query($connection,$query) or die("fail to execute query");
                   $row=mysqli_fetch_array($result);
 
-              
+
                   if($row["profile_pic"]==NULL){
                     echo "sdaf";
                     echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";

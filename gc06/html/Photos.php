@@ -23,8 +23,11 @@ session_start();
     <?php require "../includes/checklogin.php";
     ?>
 
+
     <?php require "../includes/headerforotherpages.php";
     ?>
+
+
 
     <section>
       <div class="container">

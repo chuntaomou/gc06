@@ -7,7 +7,6 @@ $target="../images/".basename($_FILES["image"]["name"]);
 $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
 $image=$_FILES["image"]["name"];
 $id=$_SESSION["userid"];
-
 $query="UPDATE user_detail SET profile_pic='$image' WHERE user_id='$id'";
 $querydelete="SELECT * FROM user_detail WHERE user_id='$id'";
 $result2=mysqli_query($connection,$querydelete);
