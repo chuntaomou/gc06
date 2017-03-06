@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "../php/mysql_connect.php";
+$connection=mysqli_connect("localhost","root","root","socialsite_db");
 ini_set('display_error', '1');
 error_reporting(E_ALL);
  $userid = $_SESSION["userid"];
@@ -56,4 +56,6 @@ if (mysqli_num_rows($result)!= 0){
 
 
 }
+
+mysqli_close($connection);
  ?>

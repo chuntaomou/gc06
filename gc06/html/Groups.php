@@ -53,8 +53,13 @@ session_start();
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="page-header">Groups</h1>
-             <?php include "../php/getGroups.php"; ?>
+            <h1 class="page-header">Groups
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="modal">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
+            </h1>
+
+             <?php include_once "../php/getGroups.php"; ?>
              <ul class="photos gallery-parent">
                <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
                <li><a href="../img/sample2.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
@@ -64,11 +69,14 @@ session_start();
                <li><a href="../img/sample6.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
 
              </ul>
+             <!-- Trigger the modal with a button -->
+
+
           </div>
 
 
-          <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="modal">Open Modal</button>
+
+
 
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
@@ -102,7 +110,10 @@ session_start();
                    </div>
                   </div>
                 </div>
-                   <?php include "../php/listFriendsName.php" ?>
+
+                   <?php
+                    include "../php/listFriendsName.php";
+                    ?>
 
                 </div>
               </div>

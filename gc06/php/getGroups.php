@@ -15,7 +15,9 @@
 ('
    <div class="row">
      <div class="col-md-6">
-     <p> '.$name.' circleid:'.$circleid.'</p>
+      <a href="..">
+       <p> '.$name.' circleid:'.$circleid.'</p>
+      </a>
      </div>
    </div>
 ');
