@@ -41,6 +41,7 @@ mysqli_close ($connection);
     <div class="buttons-in-header pull-right">
     <a href="#" style="color: white;">My Account</a>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" >Friend Request</button>
+    <button type="button" class="btn btn-primary" id="groupchat">Group Chat</button>
     <button type="button" id="logout" class="btn btn-primary" >Log out</button>
   </div>
 
@@ -88,5 +89,9 @@ $(".acceptfriend").click(function(){
 $("#logout").click(function() {
 
    window.location="../html/Login.php";
+});
+
+$("#groupchat").click(function(){
+  window.location="../html/Groupchat.php";
 });
 </script>
