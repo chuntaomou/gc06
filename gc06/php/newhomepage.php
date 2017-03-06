@@ -57,8 +57,8 @@ $friendmayknowid=array('');
     <div class="row" style="margin:0px;">
       <div class="col-12" id="thebasic">
 
-        <a href="../html/userProfile.php">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
-        <form class="pull-right" action="" method="post">
+        <a href="../html/userProfile.php" style="font-size:40px;">Hi, <?php echo $_SESSION["firstname"]; echo "&nbsp"; echo $_SESSION["lastname"]; ?></a>
+        <form class="pull-right" action="" method="post" id="searchbox" style="margin-top:20px">
           <input class="typeahead" type=“text” placeholder="search for people" name="search" onkeydown="searchq();">
       <!--    <button type=“submit”>Search</button> -->
       <div id="output" >
@@ -77,7 +77,7 @@ $friendmayknowid=array('');
         </button>
       </div>
     <div class="navbar-collapse collapse" style="padding:0px;">
-      <ul class="nav nav-tabs nav-justified">
+      <ul class="nav nav-tabs nav-justified" style="margin-bottom:20px;">
         <li>
           <a href="../html/addtext.php" style="text-center">Add Text</a>
         </li>
@@ -91,7 +91,7 @@ $friendmayknowid=array('');
     </div>
   </nav>
     <div class="row" style="margin:0px;">
-      <div class="col-md-4" style="background-color: white;">
+      <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;"">
         <div id="friendmayknowcol">
 
 
@@ -142,7 +142,7 @@ $friendmayknowid=array('');
         </div>
       </div>
 
-      <div class="col-sm-7 col-sm-offset-1" >
+      <div class="col-sm-7 col-sm-offset-1" style="overflow-y: scroll; height:800px;">
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
         $id=$_SESSION["userid"];
@@ -163,26 +163,27 @@ $friendmayknowid=array('');
             $username=$row2["first_name"];
             echo "
             <div id='statuscol'>
-            <div class='row'>
+            <div class='row' id='u_status' style='padding:3px;'>
               <div class='row' id='u_info'>
               <div class='u_image'>
-                <img src='../images/{$userimage}'
+                <img src='../images/{$userimage}' width='40' height='40'
                 >
               </div>
               <div class='u_name'>
                 <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
               </div>
               <div class='u_time pull-right'>
-                18 hours ago
+                <p id='timeinstatus'>18 hours ago</p>
               </div>
+
             </div>
             <div id='u_content'>
               <div class='u_textorphoto'>
-                <img src='../uploads/{$photo}' style='height:229px;' class='img-thumbnail' alt=''>
+                <img src='../uploads/{$photo}' style='height:229px;' class='img-thumbnail center-block' alt=''>
                 {$text}
               </div>
             </div>
-              <div class='u_commentbar btn-group btn-group-justified' role='group'>
+              <div class='u_commentbar btn-group btn-group-justified' style='margin-top:3px;' role='group'>
               <div class='btn-group' role='group'>
                 <button type='button' class='btn btn-default' id='Like'>Like</button></div>
                 <div class='btn-group' role='group'>
@@ -192,21 +193,28 @@ $friendmayknowid=array('');
               </div>
               <div id='commentform$photo_id'>
               <form>
-              <textarea class='form-control' id='content$photo_id' cols='60' style='height: 55px;' placeholder='Add Comments ....'></textarea>
+              <textarea class='form-control' id='content$photo_id' cols='60' style='height: 55px; margin-top:5px;' placeholder='Add Comments ....'></textarea>
               </form>
-              <button class='btn btn-default photocomment' id='$photo_id'>Submit</button>
-              <button class='btn btn-default cancelform' id='$photo_id'>Cancel</button>
+              <div class='btn-group btn-group-justified' style='margin-top:3px; margin-bottom:3px;' role='group'>
+              <div class='btn-group' role='group'>
+              <button class='btn btn-success photocomment' id='$photo_id'>Submit</button></div>
+              <div class='btn-group' role='group'>
+              <button class='btn btn-danger cancelform' id='$photo_id'>Cancel</button></div>
               </div>
-              <div id='u_info'>
+              </div>
+              <div id='u_info' class='clearfix'>
               <div class='u_image'>
                 <img src='https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg'
-                width='50' height='50'>
+                width='50' height='50' style='vertical-align:inherit;'>
               </div>
-              <div class='u_c_name'>
-                <a href='' style='text-decoration:none; color:#076abf;' >Emma</a>
+              <div id='u_commentlist'>
+              <div id='comment1'>
+              <div class='u_c_name '>
+                <a href='' style='text-decoration:none; color:#076abf;' ><b>Emma</b></a>
               </div>
               <div class='u_c_comment'>
                 first comment belongs to myself
+              </div>
               </div>
               <div class='u_c_date'>
                 17 hours ago
@@ -214,6 +222,7 @@ $friendmayknowid=array('');
               <div class='u_response'>
                 <a href='#' style='text-decoration:none;'><span>Like</span></a>
                 <a href='#' style='text-decoration:none;'><span>Reply</span></a>
+              </div>
               </div>
             </div>
             </div>

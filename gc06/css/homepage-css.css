@@ -89,7 +89,6 @@
 }
 .u_image{
 
-  vertical-align: middle;
 display: inline-block;
 
 }
@@ -107,33 +106,41 @@ display: inline-block;
 
 }
 
+#u_status{
+  border: 2px solid;
+  border-radius: 6px;
+  border-color: #ccc;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
 #u_info{
 
-  border: 1px solid #73AD21;
+
   margin: 0px;
 
 
 }
 
-#u_content{
-
-
-
+#u_commentlist{
+  display: inline-block;
+  vertical-align: top;
 }
 
 .u_textorphoto{
 
   font-size: 20px;
 
-  border: 1px solid #73AD21;
+background-color:inherit;;
 
   height: auto;
+
+  margin-top: 10px;
 
 }
 
 .u_commentbar{
 
-  border: 1px solid #73AD21;
 
   height: auto;
 
@@ -141,55 +148,28 @@ display: inline-block;
 
 
 
-.u_c_image{
 
-  float: left;
-
-  margin-top: 3px;
-
-  margin-left: 3px;
-
-}
 
 .u_c_name{
 
-  float: left;
-
-  margin-left: 10px;
-
-  margin-top: 0px;
-
   font-size: 16px;
+  display: inline-block;
 
 }
 
 .u_c_comment{
-
-  float: left;
-
-  margin-top: 15px;
-
-  margin-left: 25px;
-
+  display: inline-block;
 }
+
 
 .u_c_date{
 
   float: right;
 
-  margin-top: 15px;
-
-  margin-right: 20px;
 
 }
 
-.u_response{
 
-  margin-top: 39px;
-
-  margin-left: 10px;
-
-}
 .nav-tabs{
   background-color: #4267b2;
 }
@@ -204,4 +184,16 @@ display: inline-block;
 
 #statusbar {
   margin-bottom: 50px;
+}
+
+#searchbox{
+  vertical-align: middle;
+}
+
+.buttons-in-header{
+  margin-top: 5px;
+}
+
+#timeinstatus{
+  vertical-align: middle;
 }
