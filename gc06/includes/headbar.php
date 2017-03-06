@@ -37,7 +37,7 @@ mysqli_close ($connection);
 ?>
 <div class="row center-block" style="background-color:#536c9c">
 
-    <a href="homepage.php"><img src="../img/logo.jpg" class="img-rounded" alt="Meet"></a>
+    <a href="newhomepage.php"><img src="../img/logo.jpg" class="img-rounded" alt="Meet"></a>
     <div class="buttons-in-header pull-right">
     <a href="#"><button type="button" class="btn btn-primary" >My account</button></a>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" >Friend Request</button>
