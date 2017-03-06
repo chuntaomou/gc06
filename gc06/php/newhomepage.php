@@ -172,8 +172,8 @@ $friendmayknowid=array('');
               <div class='u_name'>
                 <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
               </div>
-              <div class='u_time pull-right'>
-                <p id='timeinstatus'>18 hours ago</p>
+              <div class='u_time pull-right' style='text-align:center;'>
+                18 hours ago
               </div>
 
             </div>
