@@ -168,7 +168,8 @@ $friendmayknowid=array('');
             $row2=mysqli_fetch_array($result2);
             $userimage=$row2["profile_pic"];
             $username=$row2["first_name"];
-            echo "
+            $photodate=$row["posted_date"];
+            $output.= "
             <div id='statuscol'>
             <div class='row' id='u_status' style='padding:3px;'>
               <div class='row' id='u_info'>
@@ -180,7 +181,7 @@ $friendmayknowid=array('');
                 <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
               </div>
               <div class='u_time pull-right' style='text-align:center;'>
-                18 hours ago
+              {$photodate }
               </div>
 
             </div>
@@ -192,7 +193,9 @@ $friendmayknowid=array('');
             </div>
               <div class='u_commentbar btn-group btn-group-justified' style='margin-top:3px;' role='group'>
               <div class='btn-group' role='group'>
-                <button type='button' class='btn btn-default' id='Like'>Like</button></div>
+                <button type='button' class='btn btn-default' id='Like'>
+                  <span class='glyphicon glyphicon-heart'aria-hidden=' true'></span>
+                  Like</button></div>
                 <div class='btn-group' role='group'>
                 <button type='button' class='btn btn-default commentform' id='$photo_id'>Comment</button></div>
                   <div class='btn-group' role='group'>
@@ -209,34 +212,51 @@ $friendmayknowid=array('');
               <button class='btn btn-danger cancelform' id='$photo_id'>Cancel</button></div>
               </div>
               </div>
-              <div id='u_info' class='clearfix'>
-              <div class='u_image'>
-                <img src='https://iso.500px.com/wp-content/uploads/2016/02/stock-photo-141092249-1500x1000.jpg'
-                width='50' height='50' style='vertical-align:inherit;'>
-              </div>
-              <div id='u_commentlist'>
-              <div id='comment1'>
-              <div class='u_c_name '>
-                <a href='' style='text-decoration:none; color:#076abf;' ><b>Emma</b></a>
-              </div>
-              <div class='u_c_comment'>
-                first comment belongs to myself
-              </div>
-              </div>
-              <div class='u_c_date'>
-                17 hours ago
-              </div>
-              <div class='u_response'>
-                <a href='#' style='text-decoration:none;'><span>Like</span></a>
-                <a href='#' style='text-decoration:none;'><span>Reply</span></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            </div>
             ";
+            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id'";
+            $resultcomment=mysqli_query($connection,$querycomment) or die("asdfasdf");
+            $countcomment=mysqli_num_rows($resultcomment);
+            if($countcomment>0){
+              while($rowcomment=mysqli_fetch_array($resultcomment)){
+                $commentid=$rowcomment["comment_by_user_id"];
+                $query3="SELECT * FROM user_detail WHERE user_id='$commentid'";
+                $result3=mysqli_query($connection,$query3);
+                $row3=mysqli_fetch_array($result3);
+                $commentimage=$row3["profile_pic"];
+                $commentcontent=$rowcomment["comment_content"];
+                $commentname=$row3["first_name"].$row3["last_name"];
+                $commenttime=$rowcomment["comment_date"];
+                //find the name who comment on it
+
+
+
+                $output.="
+                <div id='u_info'>
+                <div class='u_image'>
+                  <img src='../images/{$commentimage}'
+                  width='50' height='50'>
+                </div>
+                <div class='u_c_name'>
+                  <a href='' style='text-decoration:none; color:#076abf;' >{$commentname}</a>
+                </div>
+                <div class='u_c_comment'>
+                  {$commentcontent}
+                </div>
+                <div class='u_c_date'>
+                  {$commenttime}
+                </div>
+                </div>
+                ";
+              }
+            }
+            $output.="
+            </div>
+            </div>"
+            ;
           }
+          echo $output;
         }
+
         mysqli_close($connection);
 
         ?>
