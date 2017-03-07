@@ -42,7 +42,7 @@ session_start();
               </button>
             </h1>
 
-             <?php include_once "../php/getGroups.php"; ?>
+             <?php include "../php/getGroups.php"; ?>
              <ul class="photos gallery-parent">
                <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
                <li><a href="../img/sample2.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
