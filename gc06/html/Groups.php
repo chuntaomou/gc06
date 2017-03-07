@@ -97,7 +97,7 @@ session_start();
                    <?php
                     include "../php/listFriendsName.php";
                     ?>
-
+                  <input type="file" name="image" value="Add from system" class="btn btn-default">
                 </div>
               </div>
               <div class="modal-footer">

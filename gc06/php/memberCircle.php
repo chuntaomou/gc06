@@ -7,6 +7,12 @@
   $memberid = $_POST["value"];
   $circleid = $_POST["circleid"];
 
+  ////////////////////////////////////////////////////
+  //photo for group
+  $msg="";
+  $target="";
+  ///////////////////////////////////////////////////
+
   $query = "INSERT INTO circle_members(circle_id, member_user_id) values ('$circleid','$memberid') ";
   $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
   if (!$result) {echo "problem occur";}
