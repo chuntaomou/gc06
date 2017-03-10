@@ -7,23 +7,55 @@
   $userid = $_SESSION['userid'];
   $circleArray = array();
 
+  $output="";
+  $output.="
+  <div class='row'>
+  <h4>You are admin of circles:</h4>
+  ";
   $query = "SELECT * FROM circle_detail WHERE circle_admin_user_id ='$userid' ";
   $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
   while ($row=mysqli_fetch_array($result)){
-     $circleArray []= $row["circle_name"];
+     $circleName= $row["circle_name"];
+     $circleid=$row["circle_id"];
+     $output.='
+     <li>
+     <a href="../html/Circlechat.php?id='.$circleid.'">
+     <img src="../img/group.png" class="img-thumbnail">
+     </a>
+     '.$circleName.'
+     </li>
+     ';
+     $output.="</div>";
   }
-  foreach($circleArray as $circleName){
-    echo
-   ('
-   <div class="row">
-     <div class="col-md-6">
-      <a href="../">
-       <p> '.$circleName.'</p>
-      </a>
-     </div>
-   </div>
-    ');
-}
 
+  $output.="
+  <div class='row'>
+  <h4>You are members of circles:</h4>
+  ";
+
+  $querymember="SELECT * FROM circle_members WHERE member_user_id='$userid'";
+  $resultmember=mysqli_query($connection,$querymember) or die ("error in selecting member in circle");
+  $countmember=mysqli_num_rows($resultmember);
+
+  if($countmember>0){
+    while($rowmember=mysqli_fetch_array($resultmember)){
+      $circle_member_id=$rowmember["circle_id"];
+      $queryfindname="SELECT * FROM circle_detail WHERE circle_id='$circle_member_id'";
+      $resultfindname=mysqli_query($connection,$queryfindname) or die("error in finding name member");
+      $row_member_name=mysqli_fetch_array($resultfindname);
+      $circle_member_name=$row_member_name["circle_name"];
+      $output.='
+      <li>
+      <a href="../html/Circlechat.php?id='.$circle_member_id.'">
+      <img src="../img/group.png" class="img-thumbnail">
+      </a>
+      '.$circle_member_name.'
+      </li>
+      ';
+    }
+  }
+  $output.="</div>";
+
+  echo $output;
 mysqli_close($connection);
 ?>

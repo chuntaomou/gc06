@@ -7,7 +7,7 @@
   $userid = $_SESSION["userid"];
   $name = $_POST["title"];
 
-  $query = "INSERT INTO circle_detail(circle_admin_user_id, circle_name) values ('$userid','$name') ";
+  $query = "INSERT INTO circle_detail(circle_admin_user_id, circle_name,circle_bio) values ('$userid','$name','$image') ";
   $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
   if ($result) {echo mysqli_insert_id($connection);}
 

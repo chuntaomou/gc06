@@ -32,9 +32,9 @@ session_start();
                   <h3 class="panel-title">Write something</h3>
                 </div>
                 <div class="panel-body">
-                  <form>
+                  <form method="post" action="../php/addtext.php" enctype="multipart/form-data">
                     <div class="form-group">
-                      <textarea class="form-control" style="height: 150px;" placeholder="Write something about today"></textarea>
+                      <textarea class="form-control" style="height: 150px;" name="text" placeholder="Write something about today"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                     <div class="pull-right">

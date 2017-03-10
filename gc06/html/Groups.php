@@ -42,15 +42,8 @@ session_start();
               </button>
             </h1>
 
-             <?php include "../php/getGroups.php"; ?>
              <ul class="photos gallery-parent">
-               <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-               <li><a href="../img/sample2.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-               <li><a href="../img/sample3.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-               <li><a href="../img/sample4.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-               <li><a href="../img/sample5.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-               <li><a href="../img/sample6.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/group.png" class="img-thumbnail" alt=""></a></li>
-
+               <?php include "../php/getGroups.php"; ?>
              </ul>
              <!-- Trigger the modal with a button -->
 
@@ -101,8 +94,8 @@ session_start();
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="create"> Create </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
 
@@ -208,8 +201,7 @@ session_start();
            })
          })
 
-
-
+         window.location="../html/Groups.php";
       })
 
     </script>
