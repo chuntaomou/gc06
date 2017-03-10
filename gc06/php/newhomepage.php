@@ -181,7 +181,16 @@ $friendmayknowid=array('');
                 <a href='' style='text-decoration:none; color:#076abf;' >{$username}</a>
               </div>
               <div class='u_time pull-right' style='text-align:center;'>
-              {$photodate }
+              {$photodate}
+              </div>
+              <div class='row'>
+               <div class='col-md-12'>
+               <div class='u_delete pull-right style='text-align:center;'>
+                <a href='../php/deletephoto.php?id={$photo_id}'>
+                 delete
+                </a>
+               </div>
+               </div>
               </div>
 
             </div>
@@ -218,6 +227,7 @@ $friendmayknowid=array('');
             $countcomment=mysqli_num_rows($resultcomment);
             if($countcomment>0){
               while($rowcomment=mysqli_fetch_array($resultcomment)){
+                $commentID=$rowcomment["comment_id"];
                 $commentid=$rowcomment["comment_by_user_id"];
                 $query3="SELECT * FROM user_detail WHERE user_id='$commentid'";
                 $result3=mysqli_query($connection,$query3);
@@ -244,6 +254,11 @@ $friendmayknowid=array('');
                 </div>
                 <div class='u_c_date'>
                   {$commenttime}
+                </div>
+                <div class='u_c_delete' >
+                 <a href='../php/deleteComment.php?id={$commentID}'>
+                  delete
+                 </a>
                 </div>
                 </div>
                 ";
@@ -301,6 +316,7 @@ $friendmayknowid=array('');
         //do nothing
       });
       $("#commentform"+id).hide();
+      window.location.href="../php/newhomepage.php";
     }else{
       alert("no comment input !");
     }
