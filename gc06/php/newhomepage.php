@@ -96,55 +96,75 @@ $friendmayknowid=array('');
     <div class="row" style="margin:0px;">
       <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;"">
         <div id="friendmayknowcol">
-
-
-          <!-- search friend may know to user in database -->
           <?php include "../php/mysql_connect.php";
-          $query="SELECT * FROM user_detail";
-          $result=mysqli_query($connection,$query);
-          $count=mysqli_num_rows($result);
-          if($count==0){
-            echo "There is no user you may know....";
-          }else{
+          $userid=$_SESSION["userid"];
+          $queryselect="SELECT * FROM friends_list WHERE user_id='$userid' OR friend_id='$userid' AND status='friend'";
+          $resultselect=mysqli_query($connection,$queryselect);
+          $countselect=mysqli_num_rows($resultselect);
 
-            while($row=mysqli_fetch_array($result)){
-              if($friendmayknowfirst_name[0]==null){
-                $friendmayknowid[0]=$row["user_id"];
-                $friendmayknowfirst_name[0]=$row["first_name"];
+          if($countselect>0){
+            while($rowselect=mysqli_fetch_array($resultselect)){
+              if($rowselect["user_id"]==$userid){
+                $friendid=$rowselect["friend_id"];
               }else{
-                $friendmayknowid[]=$row["user_id"];
-                $friendmayknowfirst_name[]=$row["first_name"];
+                $friendid=$rowselect["user_id"];
+              }
+
+              $queryrecommend="SELECT * FROM friends_list WHERE user_id='$friendid' OR friend_id='$friendid' AND status='friend'";
+              $resultrecommend=mysqli_query($connection,$queryrecommend) or die("error in executing queryrecommend");
+              $countrecommend=mysqli_num_rows($resultrecommend);
+
+              if($countrecommend>0){
+                while($rowrecommend=mysqli_fetch_array($resultrecommend)){
+                  if($rowrecommend["user_id"]==$friendid){
+                    if($rowrecommend["friend_id"]!=$userid){
+                      $recommendid=$rowrecommend["friend_id"];
+                    }
+                  }else{
+                    if($rowrecommend["user_id"]!=$userid){
+                      $recommendid=$rowrecommend["user_id"];
+                    }
+                  }
+                }
+
+                if(isset($recommendid)){
+                  $queryinfo="SELECT * FROM user_detail WHERE user_id='$recommendid'";
+                  $resultinfo=mysqli_query($connection,$queryinfo);
+                  $rowinfo=mysqli_fetch_array($resultinfo);
+                  $image=$rowinfo["profile_pic"];
+                  $firstname=$rowinfo["first_name"];
+                  $lastname=$rowinfo["last_name"];
+
+                  echo "
+                  <div class='row' style='margin:10px'>
+                  <div id='$recommendid'>
+                  <img
+                  src='../images/";
+                  echo $image;
+                  echo "'
+                  width='40' height='40'>
+                  <div id='name'>
+                    $firstname  $lastname
+                  </div>
+
+                  <div class='btn-group btn-group-justified' style='margin-top:3px; margin-bottom:3px;' role='group'>
+                  <div id='friendbutton'class='btn-group' role='group'>
+                  <button type='button' id='$recommendid' class ='btn btn-success btn-block addfriend'>Add Friend</button>
+                  </div>
+
+                  <div id='ignorebutton' class='btn-group' role='group'>
+                  <button type='button' id='$recommendid' class ='btn btn-danger btn-block ignorebutton'>Ignore</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  ";
+                }
               }
             }
-
           }
 
           mysqli_close($connection);
-          $count=0;
-          foreach($friendmayknowid as $friendid){
-            echo "
-            <div class='row' style='margin:10px'>
-            <div id='$friendid'>
-
-            <img
-            src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
-            width='40' height='40'>
-            <div id='name'>
-              $friendmayknowfirst_name[$count]
-            </div>
-            <div class='btn-group btn-group-justified' style='margin-top:3px; margin-bottom:3px;' role='group'>
-            <div id='friendbutton'class='btn-group' role='group'>
-            <button type='button' id='$friendid' class ='btn btn-success btn-block addfriend'>Add Friend</button>
-            </div>
-            <div id='ignorebutton' class='btn-group' role='group'>
-            <button type='button' id='$friendid' class ='btn btn-danger btn-block ignorebutton'>Ignore</button>
-            </div>
-            </div>
-            </div>
-            </div>
-            ";
-            $count=$count+1;
-          }
           ?>
         </div>
       </div>
