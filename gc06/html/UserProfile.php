@@ -29,15 +29,7 @@ ini_set('error_reporting', E_ALL);
    <?php require "../includes/checklogin.php";
    ?>
 
-   <script type="text/javascript">
-   $(document).ready(function(){
-      //var username;
-        $.get("../php/userProfile.php",function(data){
-          var username=data;
-          $("#username").append(username);   //get username
-        });
-});
-   </script>
+
 
 </head>
 
@@ -56,13 +48,13 @@ ini_set('error_reporting', E_ALL);
         <div class="row">
           <div class="col-md-8">
             <div class="profile">
-              <h1 class="page-header" id="username"></h1>
+              <h1 class="page-header" id="username"><?php include_once "../php/userProfile.php"; ?></h1>
               <div class="row">
                 <div class="col-md-4">
                   <!-- show user image  -->
                   <?php
                   $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-                  $id=$_SESSION["userid"];
+                  $id=$_GET['id'];
                   $query="SELECT * FROM user_detail WHERE user_id='$id'";
                   $result=mysqli_query($connection,$query) or die("fail to execute query");
                   $row=mysqli_fetch_array($result);
@@ -88,49 +80,14 @@ ini_set('error_reporting', E_ALL);
                   </form>
                 </div>
               <?php
-              $test=5;
-              if($test==0){
-                echo "
-                  <div class='col-md-8'>
-                    <ul>
-                      <li><strong>Name:</strong>Lou Lou</li>
-                      <li><strong>Email:</strong>loushen@gmail.com</li>
-                      <li><strong>City:</strong>London</li>
-                      <li><strong>University:</strong>UCL</li>
-                      <li><strong>Number:</strong>0734767637</li>
-                      <li><strong>DOB:</strong>September 16th</li>
-                    </ul>
-                  </div>";
+
+              if($_GET['id']==$_SESSION['userid']){
+                 include_once "../php/getUserDetail.php";
+
               }else{
-                echo "
-                  <div class='col-md-8'>
-                    <ul>
-                      <li><strong>Name:</strong>Lou Lou</li>
-                      <li><strong>Email:</strong>loushen@gmail.com</li>
-                      <li><strong>City:</strong>London</li>
-                      <li><strong>University:</strong>UCL</li>
-                      <li><strong>Number:</strong>0734767637</li>
-                      <li><strong>DOB:</strong>September 16th</li>
-                    </ul>
-                  </div>";
+                 include_once "../php/getUserDetail.php";
               }
-              /*
-              echo "
-                <div class='col-md-8'>
-                  <ul>
-                    <li><strong>Name:</strong>Lou Lou</li>
-                    <li><strong>Email:</strong>loushen@gmail.com</li>
-                    <li><strong>City:</strong>London</li>
-                    <li><strong>University:</strong>UCL</li>
-                    <li><strong>Number:</strong>0734767637</li>
-                    <li><strong>DOB:</strong>September 16th</li>
-                  </ul>
-                  <span class='pull-right'>
-                    <button type='submit'
-                    class='btn btn-sm btn-info'>Unfriend</button>
-                  </span>
-                </div>";
-                */
+
                 ?>
               </div><br><br>
               <div class="row">
