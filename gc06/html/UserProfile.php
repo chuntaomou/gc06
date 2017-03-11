@@ -114,23 +114,6 @@ ini_set('error_reporting', E_ALL);
                     </ul>
                   </div>";
               }
-              /*
-              echo "
-                <div class='col-md-8'>
-                  <ul>
-                    <li><strong>Name:</strong>Lou Lou</li>
-                    <li><strong>Email:</strong>loushen@gmail.com</li>
-                    <li><strong>City:</strong>London</li>
-                    <li><strong>University:</strong>UCL</li>
-                    <li><strong>Number:</strong>0734767637</li>
-                    <li><strong>DOB:</strong>September 16th</li>
-                  </ul>
-                  <span class='pull-right'>
-                    <button type='submit'
-                    class='btn btn-sm btn-info'>Unfriend</button>
-                  </span>
-                </div>";
-                */
                 ?>
               </div><br><br>
               <div class="row">
@@ -166,18 +149,11 @@ ini_set('error_reporting', E_ALL);
               </div>
               <div class="panel-body">
                 <ul>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="../img/user.png" alt=""></a></li>
+                  <?php
+                  include "../php/listAllFriends.php";
+                  ?>
                 </ul>
                 <div class="clearfix"></div>
-                <a class="btn btn-primary" href="#">View All Friends</a>
               </div>
             </div>
             <div class="panel panel-default groups">

@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include_once "../php/mysql_connect.php";
 ini_set('display_error', '1');
 error_reporting(E_ALL);
@@ -29,23 +29,11 @@ if (mysqli_num_rows($result)!= 0){
      echo
 
       ('
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class ="row">
-                <div class ="col-xs-8 col-md-4">
-                  <a href="../html/UserProfile.php?id='.$id.'" class ="thumbail">
-                    <img src= '.$icon.' alt ="usericon">
-                  </a>
-                </div>
-                <div class ="col-xs-6 col-md-4">
-                 <p> '.$name.' </p>
-                </div>
-             </div>
-            </div>
-          </div>
-        </div>
-
+      <li>
+      <a href="../html/UserProfile.php?id='.$id.'" class ="thumbail">
+      <img src= '.$icon.' alt ="usericon" style="width: 40px; height: 40px">
+      </a>
+      </li>
     ');
 
 
