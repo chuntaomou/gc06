@@ -271,7 +271,13 @@ $friendmayknowid=array('');
           }
           echo $output;
         }
+<<<<<<< HEAD
 /*        $querytext="SELECT * FROM text_detail";
+=======
+
+
+        $querytext="SELECT * FROM text_detail";
+>>>>>>> f743426f47ef213e774a8864555a0bd001b6d828
         $resulttext=mysqli_query($connection,$querytext) or die ("fail to execute query");
         $counttext=mysqli_num_rows($resulttext);
 
