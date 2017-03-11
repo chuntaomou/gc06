@@ -271,11 +271,7 @@ $friendmayknowid=array('');
           }
           echo $output;
         }
-<<<<<<< HEAD
-=======
 
-        mysqli_close($connection);
->>>>>>> d3e03de9a37df0070d2d7085f4c8ae04f7de39e7
 
         $querytext="SELECT * FROM text_detail";
         $resulttext=mysqli_query($connection,$querytext) or die ("fail to execute query");
