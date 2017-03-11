@@ -41,6 +41,8 @@ else
     $row = mysqli_fetch_array($result);
     $_SESSION["firstname"]=$row["first_name"];
     $_SESSION["lastname"]=$row["last_name"];
+    $_SESSION["city"]=$row["city"];
+    $_SESSION["workplace"]=$row["work_place"];
 
 
 	}
