@@ -8,8 +8,9 @@ $requestlist=array('');
 $result=mysqli_query($connection,$query);
 $count=mysqli_num_rows($result);
 $output=null;
+$outputfriend=null;
 if($count==0){
-  $output="there is no friend request";
+  $outputfriend="there is no friend request";
 }else{
   while($row=mysqli_fetch_array($result)){
     $requestid=$row["user_id"];
@@ -20,7 +21,7 @@ if($count==0){
     $requestfirstname = $row2["first_name"];
     $requestlastname = $row2["last_name"];
 
-    $output.="<div id='$requestid'>
+    $outputfriend.="<div id='$requestid'>
     <img
     src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
     width='40' height='40'>
@@ -60,7 +61,7 @@ mysqli_close ($connection);
       </div>
       <div class="modal-body">
         <?php
-        echo $output;
+        echo $outputfriend;
         ?>
       </div>
       <div class="modal-footer">

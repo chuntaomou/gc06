@@ -19,7 +19,7 @@
      $circleid=$row["circle_id"];
      $output.='
      <li>
-     <a href="../html/Circlechat.php?id='.$circleid.'">
+     <a href="../html/Circlechat.php?id='.$circleid.'" target ="_blank">
      <img src="../img/group.png" class="img-thumbnail">
      </a>
      '.$circleName.'
