@@ -37,9 +37,9 @@ $_SESSION["circleid"]=$_GET["id"];
         <h1>Chat Room</h1>
       </header>
 
-      <div class="row">
+      <div class="row center-block text-center">
       <div id="members">
-        <ul class="photos gallery-parent">
+        <ul class="photos gallery-parent nav nav-tabs nav-justified">
           <?php
           $circleid=$_GET["id"];
           $queryselectmembers="SELECT * FROM circle_members WHERE circle_id='$circleid'";
@@ -107,12 +107,21 @@ $_SESSION["circleid"]=$_GET["id"];
       </div>
     </div>
 
-   <div class="row">
-      <div id="inputs">
-        <form method="post" action="../php/process.php">
-          <input type="text" id="newmessage" name="message" placeholder="Enter A Message"/>
-          <input type="submit" id="show-btn" name="submit" value="Show It"/>
-        </form>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Chat input</h3>
+          </div>
+          <div class="panel-body">
+            <form method="post" action="../php/process.php">
+              <div class="form-group">
+                <textarea class="form-control" placeholder="Write here"></textarea>
+              </div>
+              <button type="submit" class="btn btn-default pull-right">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
