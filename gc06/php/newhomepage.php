@@ -173,7 +173,7 @@ $friendmayknowid=array('');
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
         $id=$_SESSION["userid"];
-        $query="SELECT * FROM photo_detail";
+        $query="SELECT * FROM photo_detail ORDER BY posted_date DESC";
         $result=mysqli_query($connection,$query) or die("fail to execute query");
         $count=mysqli_num_rows($result);
 
@@ -242,7 +242,7 @@ $friendmayknowid=array('');
               </div>
               </div>
             ";
-            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id'";
+            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id' ORDER BY comment_date DESC";
             $resultcomment=mysqli_query($connection,$querycomment) or die("asdfasdf");
             $countcomment=mysqli_num_rows($resultcomment);
             if($countcomment>0){
