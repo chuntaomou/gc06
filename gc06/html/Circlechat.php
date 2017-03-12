@@ -118,7 +118,7 @@ $_SESSION["circleid"]=$_GET["id"];
               <div class="form-group">
                 <textarea class="form-control" name= "message" placeholder="Write here"></textarea>
               </div>
-              <button type="submit" name="submit" class="btn btn-default pull-right">Submit</button>
+              <button type="submit" name="submit " class="btn btn-default pull-right">Submit</button>
             </form>
           </div>
         </div>
