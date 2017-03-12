@@ -99,6 +99,9 @@ $_SESSION["circleid"]=$_GET["id"];
             $outputsenderimage='
             <img src="../images/'.$senderimage.'" class="img-thumbnail" alt="" style="width: 40px; height: 40px;">
             ';
+            $outputsenderimage='
+            <img src="../images/'.$senderimage.'" class="img-thumbnail" alt="" style="width: 40px; height: 40px;">
+            ';
             echo $outputsenderimage;
             ?><?php echo $rowsenderinfo["first_name"]; ?></strong>
             :<?php echo $row["message_content"] ?>
@@ -118,7 +121,7 @@ $_SESSION["circleid"]=$_GET["id"];
               <div class="form-group">
                 <textarea class="form-control" name= "message" placeholder="Write here"></textarea>
               </div>
-              <button type="submit" name="submit " class="btn btn-default pull-right">Submit</button>
+              <button type="submit" name="submit" class="btn btn-default pull-right">Submit</button>
             </form>
           </div>
         </div>
