@@ -7,6 +7,8 @@ ini_set('error_reporting', E_ALL);
 <?php
 $friendmayknowfirst_name=array('');
 $friendmayknowid=array('');
+$recommendArray=array('');
+
 ?>
 
 
@@ -102,6 +104,7 @@ $friendmayknowid=array('');
           $resultselect=mysqli_query($connection,$queryselect);
           $countselect=mysqli_num_rows($resultselect);
 
+        // get friend id
           if($countselect>0){
             while($rowselect=mysqli_fetch_array($resultselect)){
               if($rowselect["user_id"]==$userid){
@@ -109,60 +112,47 @@ $friendmayknowid=array('');
               }else{
                 $friendid=$rowselect["user_id"];
               }
-
+      //use friend id to find the friend of the friend
               $queryrecommend="SELECT * FROM friends_list WHERE user_id='$friendid' OR friend_id='$friendid' AND status='friend'";
               $resultrecommend=mysqli_query($connection,$queryrecommend) or die("error in executing queryrecommend");
               $countrecommend=mysqli_num_rows($resultrecommend);
 
               if($countrecommend>0){
                 while($rowrecommend=mysqli_fetch_array($resultrecommend)){
+                  $bool=0;
                   if($rowrecommend["user_id"]==$friendid){
-                    if($rowrecommend["friend_id"]!=$userid){
-                      $recommendid=$rowrecommend["friend_id"];
+                    if($rowrecommend["friend_id"]!=$userid){   //如果这个id不是user自己
+                      $recommendid=$rowrecommend["friend_id"];  //那么就变成了recommendid
+                      foreach($recommendArray as $recommendSingle)  {
+                        if ($recommendSingle==$recommendid)  $bool=1;  //判断是否重复出现
+                      }
+                      if ($bool==0) {
+                        $recommendArray[]=$recommendid;
+                        include "../includes/recommendation.php";
+
+                      }
                     }
+                   
                   }else{
                     if($rowrecommend["user_id"]!=$userid){
-                      $recommendid=$rowrecommend["user_id"];
-                    }
-                  }
-                }
+                      $recommendid=$rowrecommend["user_id"];  //反之另外一个id是recommendid
+                      foreach($recommendArray as $recommendSingle){
+                        if ($recommendSingle == $recommendid) $bool=1;
+                      }  //foreach
+                        if ($bool==0){
+                          $recommendArray[]=$recommendid;
+                          include "../includes/recommendation.php";
+                        } // if bool=0
+                      }  //if rowrecommend
 
-                if(isset($recommendid)){
-                  $queryinfo="SELECT * FROM user_detail WHERE user_id='$recommendid'";
-                  $resultinfo=mysqli_query($connection,$queryinfo);
-                  $rowinfo=mysqli_fetch_array($resultinfo);
-                  $image=$rowinfo["profile_pic"];
-                  $firstname=$rowinfo["first_name"];
-                  $lastname=$rowinfo["last_name"];
+                    } //else
+                  } //while
+                } //if count
 
-                  echo "
-                  <div class='row' style='margin:10px'>
-                  <div id='$recommendid'>
-                  <img
-                  src='../images/";
-                  echo $image;
-                  echo "'
-                  width='40' height='40'>
-                  <div id='name'>
-                    $firstname  $lastname
-                  </div>
+              } // while
+            } //if countselect
 
-                  <div class='btn-group btn-group-justified' style='margin-top:3px; margin-bottom:3px;' role='group'>
-                  <div id='friendbutton'class='btn-group' role='group'>
-                  <button type='button' id='$recommendid' class ='btn btn-success btn-block addfriend'>Add Friend</button>
-                  </div>
 
-                  <div id='ignorebutton' class='btn-group' role='group'>
-                  <button type='button' id='$recommendid' class ='btn btn-danger btn-block ignorebutton'>Ignore</button>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  ";
-                }
-              }
-            }
-          }
 
           mysqli_close($connection);
           ?>
