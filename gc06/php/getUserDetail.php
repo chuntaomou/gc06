@@ -23,6 +23,7 @@
       <li><strong>Work place:</strong>{$workplace}</li>
       <li><strong>Number:</strong>{$phonenumber}</li>
       <li><strong>DOB:</strong>September 16th</li>
+      <li><button type='submit' class='btn btn-default pull-right'>friend</button></li>
     </ul>
   </div>");
 

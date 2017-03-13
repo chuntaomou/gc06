@@ -3,6 +3,7 @@ session_start();
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
 
+
 //$connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
 if(isset($_POST["submit"])){
   $userid=$_SESSION["userid"];
