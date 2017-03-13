@@ -14,8 +14,9 @@ if(isset($_POST['searchVal'])){
     $output="there was no search result";
   }else{
     while($row=mysqli_fetch_array($result)){
-      $name=$row["first_name"];
-      $output .="<li><a href='../html/uerProfile.html'>".$name."</a></li>";
+      $name=$row["first_name"]."&nbsp".$row["last_name"];
+      $userid =$row["user_id"];
+      $output .="<li><a href='../html/UserProfile.php?id=".$userid."'>".$name."</a></li>";
     }
   }
 }else{

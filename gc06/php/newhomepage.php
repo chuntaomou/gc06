@@ -96,7 +96,7 @@ $friendmayknowid=array('');
     <div class="row" style="margin:0px;">
       <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;"">
         <div id="friendmayknowcol">
-          <?php include "../php/mysql_connect.php";
+          <?php include "../php/mysql_connect.php";   //friend recommendation
           $userid=$_SESSION["userid"];
           $queryselect="SELECT * FROM friends_list WHERE user_id='$userid' OR friend_id='$userid' AND status='friend'";
           $resultselect=mysqli_query($connection,$queryselect);
