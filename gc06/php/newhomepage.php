@@ -8,6 +8,7 @@ ini_set('error_reporting', E_ALL);
 $friendmayknowfirst_name=array('');
 $friendmayknowid=array('');
 $recommendArray=array('');
+$friendArray=array('');
 
 ?>
 
@@ -108,11 +109,16 @@ $recommendArray=array('');
           if($countselect>0){
             while($rowselect=mysqli_fetch_array($resultselect)){
               if($rowselect["user_id"]==$userid){
-                $friendid=$rowselect["friend_id"];
+                $friendArray[]=$rowselect["friend_id"];
+                $recommendArray[]=$rowselect["friend_id"];
               }else{
-                $friendid=$rowselect["user_id"];
+                $friendArray[]=$rowselect["user_id"];
+                $recommendArray[]=$rowselect["user_id"];
               }
+            } //while
+          }  //if
       //use friend id to find the friend of the friend
+      foreach($friendArray as $friendid) {
               $queryrecommend="SELECT * FROM friends_list WHERE user_id='$friendid' OR friend_id='$friendid' AND status='friend'";
               $resultrecommend=mysqli_query($connection,$queryrecommend) or die("error in executing queryrecommend");
               $countrecommend=mysqli_num_rows($resultrecommend);
@@ -126,14 +132,16 @@ $recommendArray=array('');
                       foreach($recommendArray as $recommendSingle)  {
                         if ($recommendSingle==$recommendid)  $bool=1;  //判断是否重复出现
                       }
-                      if ($bool==0) {
+                      if ($bool==0) {   //如果没有重复出现
                         $recommendArray[]=$recommendid;
+
                         include "../includes/recommendation.php";
 
                       }
                     }
-                   
-                  }else{
+
+                  }
+                  else{
                     if($rowrecommend["user_id"]!=$userid){
                       $recommendid=$rowrecommend["user_id"];  //反之另外一个id是recommendid
                       foreach($recommendArray as $recommendSingle){
@@ -143,14 +151,13 @@ $recommendArray=array('');
                           $recommendArray[]=$recommendid;
                           include "../includes/recommendation.php";
                         } // if bool=0
-                      }  //if rowrecommend
+                    }  //if rowrecommend
 
-                    } //else
-                  } //while
-                } //if count
+                  } //else
+                } //while
+              } //if count
+       }// for each friend id
 
-              } // while
-            } //if countselect
 
 
 
