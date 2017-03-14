@@ -57,6 +57,8 @@ session_start();
                   echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">friends of friends also can see
                   </button>';
                 }
+
+                mysqli_close($connection);
                 ?>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="menu2">
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show only to me</a></li>
@@ -143,11 +145,37 @@ session_start();
       $("#menu2 li a").click(function(){
       $("#menu1").text($(this).text());
       var privacy=$(this).text();
-      <?php
-      echo "
-
-      ";
-      ?>
+      if(privacy==="show only to me"){
+        <?php
+        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+        $album_id=$_GET["id"];
+        echo 'alert("show only to me")';
+        $privacy_id=0;
+        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
+        mysqli_query($connection,$query);
+        mysqli_close($connection);
+        ?>
+      }else if(privacy==="friends can see"){
+        <?php
+        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+        $album_id=$_GET["id"];
+        $privacy_id=1;
+        echo 'alert("friend can see")';
+        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
+        mysqli_query($connection,$query);
+        mysqli_close($connection);
+        ?>
+      }else{
+        <?php
+        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+        $album_id=$_GET["id"];
+        $privacy_id=3;
+        echo 'alert("friends of friends can see")';
+        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
+        mysqli_query($connection,$query);
+        mysqli_close($connection);
+        ?>
+      }
       });
     </script>
   </body>
