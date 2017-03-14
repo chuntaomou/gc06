@@ -1,5 +1,7 @@
 <?php
 
+
+
   $queryinfo="SELECT * FROM user_detail WHERE user_id='$recommendid'";
   $resultinfo=mysqli_query($connection,$queryinfo);
   $rowinfo=mysqli_fetch_array($resultinfo);
@@ -7,12 +9,13 @@
   $firstname=$rowinfo["first_name"];
   $lastname=$rowinfo["last_name"];
 
+
   echo "
   <div class='row' style='margin:10px'>
   <div id='$recommendid'>
   <img
-  src='../images/";
-  echo $image;
+  src='../";
+  if ($image==NULL) echo "img/user.png"; else  echo "images/{$image}";
   echo "'
   width='40' height='40'>
   <div id='name'>
