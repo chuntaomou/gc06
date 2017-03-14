@@ -11,14 +11,9 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="../html/userProfile.php?id=<?php echo $_GET['id']; ?>">Profile</a></li>
-<<<<<<< HEAD
         <li><a href="../html/Blog.php?id=<?php echo $_GET['id']; ?>">Blogs</a></li>
-        <li><a href="../html/groups.php?id=<?php echo $_GET['id']; ?>">Photo</a></li>
-=======
-        <li><a href="../html/friends.php?id=<?php echo $_GET['id']; ?>">Blogs</a></li>
+        <li><a href="../html/groups.php?id=<?php echo $_GET['id']; ?>">Groups</a></li>
         <li><a href="../html/Photos.php?id=<?php echo $_GET['id']; ?>">Photo</a></li>
->>>>>>> cff208e11d605769ed30aad47f145129a8380770
-        <li><a href="../html/photos.php?id=<?php echo $_GET['id']; ?>">Text</a></li>
       </ul>
      <ul class="nav navbar-nav pull-right">
       <li><a href="../php/newhomepage.php">Home</a></li>
