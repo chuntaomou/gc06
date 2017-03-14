@@ -10,7 +10,7 @@ $icon=$_FILES["icon"]["name"];
 $id=$_SESSION["userid"];
 $name=$_POST["text"];
 
-$query="INSERT INTO photo_album (created_by_user_id,album_name,album_pic) VALUES ('$id','$name','$icon')";
+$query="INSERT INTO photo_album (created_by_user_id,album_name,album_pic,privacy_id) VALUES ('$id','$name','$icon','1')";
 mysqli_query($connection,$query) or die("fail to insert");
 mysqli_close($connection);
 if(move_uploaded_file($_FILES["icon"]["tmp_name"],$target)){

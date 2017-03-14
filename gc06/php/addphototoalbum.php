@@ -8,10 +8,12 @@ $target="../album/".basename($_FILES["image"]["name"]);
 $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
 $image=$_FILES["image"]["name"];
 $id=$_SESSION["userid"];
-$text=$_POST["text"];
 $album_id=$_GET["id"];
+echo $album_id;
+echo $image;
+echo $id;
 
-$query="INSERT INTO phtot_detail (album_id,photo_url,posted_by_user_id) VALUES ('$album_id','$image','$id')";
+$query="INSERT INTO photo_detail (album_id,photo_url,posted_by_user_id) VALUES ('$album_id','$image','$id')";
 mysqli_query($connection,$query) or die ("fail to insert");
 mysqli_close($connection);
 
