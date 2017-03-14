@@ -39,27 +39,34 @@ session_start();
           <div class="col-md-8">
             <h1 class="page-header">Photo</h1>
             <div class="container">
-              <div class="dropdown">
-                <?php
-                $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-                $album_id=$_GET["id"];
-                $query="SELECT * FROM photo_album WHERE album_id='$album_id'";
-                $result=mysqli_query($connection,$query) or die ("error in selecting ablum info");
-                $row=mysqli_fetch_array($result);
-                $privacy_id=$row["privacy_id"];
-                if($privacy_id==0){
-                  echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">show only to me
-                  </button>';
-                }else if($privacy_id==1){
-                  echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">friends can see
-                  </button>';
-                }else{
-                  echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">friends of friends also can see
-                  </button>';
-                }
+              <?php
+              $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+              $album_id=$_GET["id"];
+              $query="SELECT * FROM photo_album WHERE album_id='$album_id'";
+              $result=mysqli_query($connection,$query) or die ("error in selecting ablum info");
+              $row=mysqli_fetch_array($result);
+              $privacy_id=$row["privacy_id"];
+              if($privacy_id==0){
+                echo "
+                <h4 id='privacy_level'> Current privacy level: show only to me</h4>
+                ";
+              }else if($privacy_id==1){
+                echo "
+                <h4 id='privacy_level'> Current privacy level: friends can see</h4>
+                ";
+              }else{
+                echo "
+                <h4 id='privacy_level'> Current privacy level: friends of friends can see</h4>
+                ";
+              }
 
-                mysqli_close($connection);
-                ?>
+              mysqli_close($connection);
+              ?>
+
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">change privacy level
+                  <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="menu2">
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show only to me</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="b">friends can see</a></li>
@@ -143,39 +150,29 @@ session_start();
       })
 
       $("#menu2 li a").click(function(){
-      $("#menu1").text($(this).text());
+
       var privacy=$(this).text();
       if(privacy==="show only to me"){
-        <?php
-        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-        $album_id=$_GET["id"];
-        echo 'alert("show only to me")';
-        $privacy_id=0;
-        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
-        mysqli_query($connection,$query);
-        mysqli_close($connection);
-        ?>
+        var privacy_id=0;
+        $('#privacy_level').text("Current privacy level: show only to me");
       }else if(privacy==="friends can see"){
-        <?php
-        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-        $album_id=$_GET["id"];
-        $privacy_id=1;
-        echo 'alert("friend can see")';
-        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
-        mysqli_query($connection,$query);
-        mysqli_close($connection);
-        ?>
+        var privacy_id=1;
+        $('#privacy_level').text("Current privacy level: friends can see");
       }else{
-        <?php
-        $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-        $album_id=$_GET["id"];
-        $privacy_id=3;
-        echo 'alert("friends of friends can see")';
-        $query="UPDATE photo_album SET privacy_id='$privacy_id' WHERE album_id='$album_id'";
-        mysqli_query($connection,$query);
-        mysqli_close($connection);
-        ?>
+        var privacy_id=2;
+        $('#privacy_level').text("Current privacy level: friends of friends also can see");
       }
+
+      <?php
+      $outptu="";
+      $output.="
+      $.post('../php/processprivacy.php?id=".$album_id."',{privacy: privacy_id},function(data){
+        //do nothing
+      });
+      ";
+
+      echo $output;
+      ?>
       });
     </script>
   </body>
