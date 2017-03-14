@@ -61,7 +61,7 @@ ini_set('error_reporting', E_ALL);
 
 
                   if($row["profile_pic"]==NULL){
-                  
+
                     echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";
                   }else{
                     echo "<img src='../images/".$row["profile_pic"]."' style='height:229px;' class='img-thumbnail' alt=''>";
@@ -122,7 +122,7 @@ ini_set('error_reporting', E_ALL);
                 <h3 class="panel-title">My Friends</h3>
               </div>
               <div class="panel-body">
-                <ul>
+                <ul style="padding:0px;">
                   <?php
                   include "../php/mysql_connect.php";
                   ini_set('display_error', '1');
@@ -167,7 +167,9 @@ ini_set('error_reporting', E_ALL);
 
                 </ul>
                 <div class="clearfix"></div>
+                <div class="row text-center">
                 <a class="btn btn-primary" href="../html/Friends.php" style="margin-top: 10px;">View All Friends</a>
+              </div>
               </div>
             </div>
             <div class="panel panel-default groups">
