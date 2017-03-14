@@ -61,7 +61,7 @@ ini_set('error_reporting', E_ALL);
 
 
                   if($row["profile_pic"]==NULL){
-                    echo "sdaf";
+                  
                     echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";
                   }else{
                     echo "<img src='../images/".$row["profile_pic"]."' style='height:229px;' class='img-thumbnail' alt=''>";
@@ -175,25 +175,58 @@ ini_set('error_reporting', E_ALL);
                 <h3 class="panel-title">Latest Groups</h3>
               </div>
               <div class="panel-body">
-                <div class="group-item">
-                  <img src="../img/group.png" alt="">
-                  <h4><a href="#" class="">Sample Group One</a></h4>
-                  <p>This is a paragraph of intro text, or whatever I want to call it.</p>
-                </div>
+                <?php
+                include "../php/mysql_connect.php";
+                ini_set('display_error', '1');
+                ini_set('error_reporting', E_ALL);
+
+                $userid=$_SESSION["userid"];
+                $output="";
+                $query = "SELECT * FROM circle_detail WHERE circle_admin_user_id ='$userid' ";
+                $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
+
+                while($row=mysqli_fetch_array($result)){
+                  $circleName= $row["circle_name"];
+                  $circleid=$row["circle_id"];
+                  $output.='
+                  <div class="group-item">
+                  <a href="../html/Circlechat.php?id='.$circleid.'" target ="_blank">
+                  <img src="../img/group.png" class="img-thumbnail">
+                  </a>
+                    <p>The name of this group is '.$circleName.'.</p>
+                  </div>
+                  <div class="clearfix"></div>
+                  ';
+                }
+
+                $querymember="SELECT * FROM circle_members WHERE member_user_id='$userid'";
+                $resultmember=mysqli_query($connection,$querymember) or die ("error in selecting member in circle");
+                $countmember=mysqli_num_rows($resultmember);
+
+                if($countmember>0){
+                  while($rowmember=mysqli_fetch_array($resultmember)){
+                    $circle_member_id=$rowmember["circle_id"];
+                    $queryfindname="SELECT * FROM circle_detail WHERE circle_id='$circle_member_id'";
+                    $resultfindname=mysqli_query($connection,$queryfindname) or die("error in finding name member");
+                    $row_member_name=mysqli_fetch_array($resultfindname);
+                    $circle_member_name=$row_member_name["circle_name"];
+                    $output.='
+                    <div class="group-item">
+                    <a href="../html/Circlechat.php?id='.$circle_member_id.'" target ="_blank">
+                    <img src="../img/group.png" class="img-thumbnail">
+                    </a>
+                      <p>The name of this group is '.$circle_member_name.'.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    ';
+                  }
+                }
+
+                mysqli_close($connection);
+                echo $output;
+                ?>
                 <div class="clearfix"></div>
-                <div class="group-item">
-                  <img src="../img/group.png" alt="">
-                  <h4><a href="#" class="">Sample Group Two</a></h4>
-                  <p>This is a paragraph of intro text, or whatever I want to call it.</p>
-                </div>
-                <div class="clearfix"></div>
-                <div class="group-item">
-                  <img src="../img/group.png" alt="">
-                  <h4><a href="#" class="">Sample Group Three</a></h4>
-                  <p>This is a paragraph of intro text, or whatever I want to call it.</p>
-                </div>
-                <div class="clearfix"></div>
-                <a href="#" class="btn btn-primary">View All Groups</a>
+                <a href="../html/Groups.php" class="btn btn-primary">View All Groups</a>
               </div>
             </div>
           </div>

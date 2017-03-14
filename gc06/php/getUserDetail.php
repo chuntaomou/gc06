@@ -23,9 +23,19 @@
       <li><strong>Work place:</strong>{$workplace}</li>
       <li><strong>Number:</strong>{$phonenumber}</li>
       <li><strong>DOB:</strong>September 16th</li>
-      <li><button type='submit' class='btn btn-default pull-right'>friend</button></li>
+      <li><button type='submit' class='btn btn-default pull-right' id='add'> add friend</button></li>
     </ul>
-  </div>");
+  </div>
+ <script>
+   $('#add').click(function(){
+     var friendid = {$userid}
+     $.post('../php/addfriend.php',{friendid},function(data){
+      alert(data)
+     });
+   })
+ </script>
+
+  ");
 
 mysqli_close($connection);
 ?>

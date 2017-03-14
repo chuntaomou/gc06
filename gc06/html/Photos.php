@@ -33,16 +33,59 @@ session_start();
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="page-header">Photos</h1>
+            <h1 class="page-header">Photo Albums</h1>
             <ul class="photos gallery-parent">
-              <li><a href="../img/sample1.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample1.jpg" class="img-thumbnail" alt=""></a></li>
-              <li><a href="../img/sample2.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample2.jpg" class="img-thumbnail" alt=""></a></li>
-              <li><a href="../img/sample3.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample3.jpg" class="img-thumbnail" alt=""></a></li>
-              <li><a href="../img/sample4.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample4.jpg" class="img-thumbnail" alt=""></a></li>
-              <li><a href="../img/sample5.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample5.jpg" class="img-thumbnail" alt=""></a></li>
-              <li><a href="../img/sample6.jpg" data-hover="tooltip" data-placement="top" title="image" data-gallery="mygallery" data-parent=".gallery-parent" data-title="title" data-footer="this is a footer" data-toggle="lightbox"><img src="../img/sample6.jpg" class="img-thumbnail" alt=""></a></li>
+              <?php
+              $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
+              $id=$_SESSION["userid"];
+              $output="";
+              $query="SELECT * FROM photo_album WHERE created_by_user_id='$id'";
+              $result=mysqli_query($connection,$query) or die ("Error in selecting photo albums");
+              $count=mysqli_num_rows($result);
+
+              if($count>0){
+                while($row=mysqli_fetch_array($result)){
+                  $album_title=$row["album_name"];
+                  $album_icon=$row["album_pic"];
+                  $album_id=$row["album_id"];
+
+                  $output.='
+                  <li>
+                  <a href="../html/Photocollection.php?id='.$album_id.'">
+                  <img src="../albumicons/'.$album_icon.'" class="img-thumbnail" alt="">
+                  '.$album_title.'
+                  </a>
+                  </li>
+                  ';
+                }
+              }
+
+              echo $output;
+
+              mysqli_close($connection);
+              ?>
             </ul>
           </div>
+
+          <div class="col-md-8">
+            <h3>Add a new album</h3>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">Creating a new ablum</h4>
+              </div>
+              <div class="panel-body">
+                <form method="post" action="../php/addalbum.php" enctype="multipart/form-data">
+                  <input type="file" name="icon" value="Add from system" class="btn btn-default">
+                  <!--<button class="btn btn-default" type="file">Add from system</button>-->
+                  <div class="form-group">
+                    <textarea class="form-control" name="text" cols="60" style="height: 100px;" placeholder="Add a title for your photo album"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
           <div class="col-md-4">
             <div class="panel panel-default friends">
               <div class="panel-heading">

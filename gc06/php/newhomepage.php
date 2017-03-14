@@ -7,6 +7,9 @@ ini_set('error_reporting', E_ALL);
 <?php
 $friendmayknowfirst_name=array('');
 $friendmayknowid=array('');
+$recommendArray=array('');
+$friendArray=array('');
+
 ?>
 
 
@@ -96,73 +99,67 @@ $friendmayknowid=array('');
     <div class="row" style="margin:0px;">
       <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;"">
         <div id="friendmayknowcol">
-          <?php include "../php/mysql_connect.php";
+          <?php include "../php/mysql_connect.php";   //friend recommendation
           $userid=$_SESSION["userid"];
           $queryselect="SELECT * FROM friends_list WHERE user_id='$userid' OR friend_id='$userid' AND status='friend'";
           $resultselect=mysqli_query($connection,$queryselect);
           $countselect=mysqli_num_rows($resultselect);
 
+        // get friend id
           if($countselect>0){
             while($rowselect=mysqli_fetch_array($resultselect)){
               if($rowselect["user_id"]==$userid){
-                $friendid=$rowselect["friend_id"];
+                $friendArray[]=$rowselect["friend_id"];
+                $recommendArray[]=$rowselect["friend_id"];
               }else{
-                $friendid=$rowselect["user_id"];
+                $friendArray[]=$rowselect["user_id"];
+                $recommendArray[]=$rowselect["user_id"];
               }
-
+            } //while
+          }  //if
+      //use friend id to find the friend of the friend
+      foreach($friendArray as $friendid) {
               $queryrecommend="SELECT * FROM friends_list WHERE user_id='$friendid' OR friend_id='$friendid' AND status='friend'";
               $resultrecommend=mysqli_query($connection,$queryrecommend) or die("error in executing queryrecommend");
               $countrecommend=mysqli_num_rows($resultrecommend);
 
               if($countrecommend>0){
                 while($rowrecommend=mysqli_fetch_array($resultrecommend)){
+                  $bool=0;
                   if($rowrecommend["user_id"]==$friendid){
-                    if($rowrecommend["friend_id"]!=$userid){
-                      $recommendid=$rowrecommend["friend_id"];
+                    if($rowrecommend["friend_id"]!=$userid){   //如果这个id不是user自己
+                      $recommendid=$rowrecommend["friend_id"];  //那么就变成了recommendid
+                      foreach($recommendArray as $recommendSingle)  {
+                        if ($recommendSingle==$recommendid)  $bool=1;  //判断是否重复出现
+                      }
+                      if ($bool==0) {   //如果没有重复出现
+                        $recommendArray[]=$recommendid;
+
+                        include "../includes/recommendation.php";
+
+                      }
                     }
-                  }else{
-                    if($rowrecommend["user_id"]!=$userid){
-                      $recommendid=$rowrecommend["user_id"];
-                    }
+
                   }
-                }
+                  else{
+                    if($rowrecommend["user_id"]!=$userid){
+                      $recommendid=$rowrecommend["user_id"];  //反之另外一个id是recommendid
+                      foreach($recommendArray as $recommendSingle){
+                        if ($recommendSingle == $recommendid) $bool=1;
+                      }  //foreach
+                        if ($bool==0){
+                          $recommendArray[]=$recommendid;
+                          include "../includes/recommendation.php";
+                        } // if bool=0
+                    }  //if rowrecommend
 
-                if(isset($recommendid)){
-                  $queryinfo="SELECT * FROM user_detail WHERE user_id='$recommendid'";
-                  $resultinfo=mysqli_query($connection,$queryinfo);
-                  $rowinfo=mysqli_fetch_array($resultinfo);
-                  $image=$rowinfo["profile_pic"];
-                  $firstname=$rowinfo["first_name"];
-                  $lastname=$rowinfo["last_name"];
+                  } //else
+                } //while
+              } //if count
+       }// for each friend id
 
-                  echo "
-                  <div class='row' style='margin:10px'>
-                  <div id='$recommendid'>
-                  <img
-                  src='../images/";
-                  echo $image;
-                  echo "'
-                  width='40' height='40'>
-                  <div id='name'>
-                    $firstname  $lastname
-                  </div>
 
-                  <div class='btn-group btn-group-justified' style='margin-top:3px; margin-bottom:3px;' role='group'>
-                  <div id='friendbutton'class='btn-group' role='group'>
-                  <button type='button' id='$recommendid' class ='btn btn-success btn-block addfriend'>Add Friend</button>
-                  </div>
 
-                  <div id='ignorebutton' class='btn-group' role='group'>
-                  <button type='button' id='$recommendid' class ='btn btn-danger btn-block ignorebutton'>Ignore</button>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  ";
-                }
-              }
-            }
-          }
 
           mysqli_close($connection);
           ?>
@@ -173,7 +170,7 @@ $friendmayknowid=array('');
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
         $id=$_SESSION["userid"];
-        $query="SELECT * FROM photo_detail";
+        $query="SELECT * FROM photo_detail ORDER BY posted_date DESC";
         $result=mysqli_query($connection,$query) or die("fail to execute query");
         $count=mysqli_num_rows($result);
 
@@ -242,7 +239,7 @@ $friendmayknowid=array('');
               </div>
               </div>
             ";
-            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id'";
+            $querycomment="SELECT * FROM photo_comment WHERE photo_id='$photo_id' ORDER BY comment_date DESC";
             $resultcomment=mysqli_query($connection,$querycomment) or die("asdfasdf");
             $countcomment=mysqli_num_rows($resultcomment);
             if($countcomment>0){
