@@ -37,28 +37,26 @@ session_start();
             <ul class="photos gallery-parent">
               <?php
               $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-              $id=$_SESSION["userid"];
+              //$id=$_SESSION["userid"];
+              $id=$_GET["id"];
+              $userid=$_SESSION["userid"];
               $output="";
-              $query="SELECT * FROM photo_album WHERE created_by_user_id='$id'";
-              $result=mysqli_query($connection,$query) or die ("Error in selecting photo albums");
-              $count=mysqli_num_rows($result);
 
-              if($count>0){
-                while($row=mysqli_fetch_array($result)){
-                  $album_title=$row["album_name"];
-                  $album_icon=$row["album_pic"];
-                  $album_id=$row["album_id"];
+              $query1="SELECT * FROM friends_list WHERE user_id='$id' AND friend_id='$userid'";
+              $query2="SELECT * FROM friends_list WHERE user_id='$userid' AND friend_id='$id'";
 
-                  $output.='
-                  <li>
-                  <a href="../html/Photocollection.php?id='.$album_id.'">
-                  <img src="../albumicons/'.$album_icon.'" class="img-thumbnail" alt="">
-                  '.$album_title.'
-                  </a>
-                  </li>
-                  ';
-                }
+              $result1=mysqli_query($connection,$query1);
+              $result2=mysqli_query($connection,$query2);
+
+              $count1=mysqli_num_rows($result1);
+              $count2=mysqli_num_rows($result2);
+
+              if(($count1+$count2)==0){
+                
+              }else{
+                //friends
               }
+
 
               echo $output;
 

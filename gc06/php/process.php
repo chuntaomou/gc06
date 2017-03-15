@@ -23,22 +23,5 @@ if(isset($_POST["submit"])){
   }else{
     header("Location: {$destination}");
   }
-/*
-  if($msg!=null){
-    $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-    $query="INSERT INTO circle_messages (message_sent_user_id,message_content,circle_id) VALUES ('$userid','$msg','$circleid')";
-    if(!mysqli_query($connection,$query)){
-      die("Error:".mysqli_error($connection));
-    }else{
-      header("Location: ../html/Circlechat.php");
-      exit();
-    }
-    mysqli_close($connection);
-  }else{
-    $error="please fill in yout name and message";
-    header("Location: ../html/Circlechat.php?error=".urlencode($error));
-    exit();
-  }
-  */
 }
 ?>

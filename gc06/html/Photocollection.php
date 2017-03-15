@@ -48,36 +48,38 @@ session_start();
               $privacy_id=$row["privacy_id"];
               if($privacy_id==0){
                 echo "
-                <h4 id='privacy_level'> Current privacy level: show only to me</h4>
+                <h4 id='privacy_level'> Current privacy level: show only to friends</h4>
                 ";
               }else if($privacy_id==1){
                 echo "
-                <h4 id='privacy_level'> Current privacy level: friends can see</h4>
+                <h4 id='privacy_level'> Current privacy level: show to circles</h4>
                 ";
               }else{
                 echo "
-                <h4 id='privacy_level'> Current privacy level: friends of friends can see</h4>
+                <h4 id='privacy_level'> Current privacy level: show to friends of friends</h4>
                 ";
               }
 
               mysqli_close($connection);
               ?>
 
+
+
+
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">change privacy level
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="menu2">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show only to me</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="b">friends can see</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="c">friends of friends also can see</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show to friends</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" id="b">show to circles</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" id="c">show to friends of friends</a></li>
                 </ul>
               </div>
             </div>
             <ul class="photos gallery-parent">
               <?php
               $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
-              $output="";
               $album_id=$_GET["id"];
               $query="SELECT * FROM photo_detail WHERE album_id='$album_id' ORDER BY posted_date DESC";
               $result=mysqli_query($connection,$query) or die ("fail to select photos in this album");
@@ -86,9 +88,13 @@ session_start();
               if($count>0){
                 while($row=mysqli_fetch_array($result)){
                   $image=$row["photo_url"];
-                  $output.='
+                  $photoid=$row["photo_id"];
+                  echo '
                   <li>
+                  <a href="../html/detailofphotoinalbum.php?id='.$photoid.'" target="_blank">
                   <img src="../album/'.$image.'" class="img-thumbnail" alt="" id="photo" style="width: 200px; height: 200px">
+                  </button>
+                  </a>
                   </li>
                   ';
                 }
@@ -96,16 +102,10 @@ session_start();
                 echo "There is no photo yet, add some!";
               }
 
-              echo $output;
-
               mysqli_close($connection);
               ?>
             </ul>
           </div>
-
-          <!-- Modal -->
-          <div id="photoModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
 
 
           <div class="col-md-12">
@@ -141,6 +141,19 @@ session_start();
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script>
+    $(document).ready(function(){
+      $("#myModal").on("show.bs.modal",function(event){
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var code   = button.data('code');
+        var modal  = $(this);
+        var photoid =button.data('id');
+        modal.find('[id="photo_url"]').text(code);
+        modal.find('[id="photo_id_in_album"]').text(photoid);
+        $("#photo_id_in_album").val(photoid);
+        $("#photo_id_in_album").hide();
+
+      });
+    });
       $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
       event.preventDefault();
       $(this).ekkoLightbox();
@@ -152,15 +165,15 @@ session_start();
       $("#menu2 li a").click(function(){
 
       var privacy=$(this).text();
-      if(privacy==="show only to me"){
+      if(privacy==="show to friends"){
         var privacy_id=0;
-        $('#privacy_level').text("Current privacy level: show only to me");
-      }else if(privacy==="friends can see"){
+        $('#privacy_level').text("Current privacy level: show to friends");
+      }else if(privacy==="show to circles"){
         var privacy_id=1;
-        $('#privacy_level').text("Current privacy level: friends can see");
+        $('#privacy_level').text("Current privacy level: show to circles");
       }else{
         var privacy_id=2;
-        $('#privacy_level').text("Current privacy level: friends of friends also can see");
+        $('#privacy_level').text("Current privacy level: show to friends of friends");
       }
 
       <?php
