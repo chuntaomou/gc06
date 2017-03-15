@@ -86,8 +86,8 @@ ini_set('error_reporting', E_ALL);
                 </div>
               <?php
 
-               include "../php/UserProfile.php";
-            
+               include "../php/getUserDetail.php";
+
 
                 ?>
               </div><br><br>
