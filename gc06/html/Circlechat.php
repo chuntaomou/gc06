@@ -55,7 +55,7 @@ $_SESSION["circleid"]=$_GET["id"];
               $name=$rowmemberinfo["first_name"];
               $output.='
               <li>
-              <a href="">
+              <a href="../html/UserProfile.php?id='.$memberid.'">
               <img src="../images/'.$image.'" class="img-thumbnail" alt="">
               </a>
               '.$name.'
