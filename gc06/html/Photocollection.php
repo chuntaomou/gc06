@@ -59,7 +59,6 @@ session_start();
                 <h4 id='privacy_level'> Current privacy level: show to friends of friends</h4>
                 ";
               }
-
               mysqli_close($connection);
               ?>
 
@@ -84,7 +83,6 @@ session_start();
               $query="SELECT * FROM photo_detail WHERE album_id='$album_id' ORDER BY posted_date DESC";
               $result=mysqli_query($connection,$query) or die ("fail to select photos in this album");
               $count=mysqli_num_rows($result);
-
               if($count>0){
                 while($row=mysqli_fetch_array($result)){
                   $image=$row["photo_url"];
@@ -101,7 +99,11 @@ session_start();
               }else{
                 echo "There is no photo yet, add some!";
               }
+<<<<<<< HEAD
 
+=======
+              echo $output;
+>>>>>>> e66a388123e28afea198cd6869b63d06227ee999
               mysqli_close($connection);
               ?>
             </ul>
@@ -161,9 +163,7 @@ session_start();
       $(function () {
       $('[data-hover="tooltip"]').tooltip()
       })
-
       $("#menu2 li a").click(function(){
-
       var privacy=$(this).text();
       if(privacy==="show to friends"){
         var privacy_id=0;
@@ -175,7 +175,6 @@ session_start();
         var privacy_id=2;
         $('#privacy_level').text("Current privacy level: show to friends of friends");
       }
-
       <?php
       $outptu="";
       $output.="
@@ -183,7 +182,6 @@ session_start();
         //do nothing
       });
       ";
-
       echo $output;
       ?>
       });
