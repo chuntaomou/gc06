@@ -1,4 +1,5 @@
 <?php
+//  session_start();
   include "../php/mysql_connect.php";
   ini_set('display_error', '1');
   ini_set('error_reporting', E_ALL);
@@ -76,8 +77,8 @@ if ($myid == $userid) {
 //判断他们是否是朋友
   $query2 ="SELECT * FROM friends_list where user_id='$myid' or friend_id='$myid'";
   $result2 =mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
-  while ($row=mysqli_fetch_array($result)){
-    if (($row["user_id"]==$userid)||($row["friend_id"]==$userid))    $friend=1;
+  while ($row2=mysqli_fetch_array($result2)){
+    if (($row2["user_id"]==$userid)||($row2["friend_id"]==$userid))    $friend=1;
   }
 
 //三种情况 ： 一种是自己的profile 一种是好友的profile 一种是陌生人的profile
@@ -89,7 +90,8 @@ if ($myid!=$userid) {
   if($friend==1){
     echo("<div class='col-md-8'>
       <ul>
-        <li><strong>Name:</strong>{$name}</li>
+        <li><strong>First Name:</strong>{$firstname}</li>
+        <li><strong>Last Name:</strong>{$lastname}</li>
         <li><strong>Gender:</strong>{$gender}</li>
         <li><strong>City:</strong>{$city}</li>
         <li><strong>Work place:</strong>{$workplace}</li>
@@ -103,7 +105,8 @@ if ($myid!=$userid) {
 
   echo("<div class='col-md-8'>
     <ul>
-      <li><strong>Name:</strong>{$name}</li>
+      <li><strong>First Name:</strong>{$firstname}</li>
+      <li><strong>Last Name:</strong>{$lastname}</li>
       <li><strong>Gender:</strong>{$gender}</li>
       <li><strong>City:</strong>{$city}</li>
       <li><strong>Work place:</strong>{$workplace}</li>
