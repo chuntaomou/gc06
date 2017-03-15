@@ -25,6 +25,11 @@ ini_set('error_reporting', E_ALL);
    <link href="../css/font-awesome.css" rel="stylesheet">
    <link href="../css/style.css" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
    <?php require "../includes/checklogin.php";
    ?>
@@ -61,7 +66,7 @@ ini_set('error_reporting', E_ALL);
 
 
                   if($row["profile_pic"]==NULL){
-                  
+
                     echo "<img src='../img/user.png' style='height:229px;' class='img-thumbnail' alt=''>";
                   }else{
                     echo "<img src='../images/".$row["profile_pic"]."' style='height:229px;' class='img-thumbnail' alt=''>";
@@ -81,12 +86,8 @@ ini_set('error_reporting', E_ALL);
                 </div>
               <?php
 
-              if($_GET['id']==$_SESSION['userid']){
-                 include_once "../php/getUserDetail.php";
-
-              }else{
-                 include_once "../php/getUserDetail.php";
-              }
+               include "../php/UserProfile.php";
+            
 
                 ?>
               </div><br><br>
@@ -234,11 +235,36 @@ ini_set('error_reporting', E_ALL);
       </div>
     </section>
 
+    <script>
+  $(document).ready(function(){
+
+    $("#save").click(function(){
+      var firstname = $("#firstname").val();
+      var lastname = $("#lastname").val();
+      var gender = $("#gender").val();
+      var city = $("city").val();
+      var workplace = $("workplace").val();
+      var phonenumber = $("phonenumber").val();
+      $.post("../php/updateProfile.php"),{firstname, lastname, gender, city, workplace, phonenumber},
+       function(data){
+         alert(data);
+       }
+    })
+
+    $('#edit').click(function(){
+      $('#profile').html(
+       'hello'
+     );
+    })
+  })
+    </script>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+
   </body>
 </html>

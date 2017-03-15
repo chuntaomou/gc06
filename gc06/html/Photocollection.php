@@ -49,12 +49,15 @@ session_start();
                 $privacy_id=$row["privacy_id"];
                 if($privacy_id==0){
                   echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">show only to me
+                  <span class="caret"></span>
                   </button>';
                 }else if($privacy_id==1){
                   echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">friends can see
+                  <span class="caret"></span>
                   </button>';
                 }else{
                   echo '<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">friends of friends also can see
+                  <span class="caret"></span>
                   </button>';
                 }
 
@@ -63,6 +66,7 @@ session_start();
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="menu2">
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show only to me</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="b">friends can see</a></li>
+
                   <li role="presentation"><a role="menuitem" tabindex="-1" id="c">friends of friends also can see</a></li>
                 </ul>
               </div>
