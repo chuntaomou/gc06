@@ -12,5 +12,5 @@
   if (!$result) {echo "problem occur";}
 
 
-mysqli_close($connection);
+  mysqli_close($connection);
 ?>

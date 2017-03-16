@@ -8,10 +8,6 @@
   $circleArray = array();
 
   $output="";
-  $output.="
-  <div class='row'>
-  <h4>You are admin of circles:</h4>
-  ";
   $query = "SELECT * FROM circle_detail WHERE circle_admin_user_id ='$userid' ";
   $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
   while ($row=mysqli_fetch_array($result)){
@@ -25,13 +21,8 @@
      '.$circleName.'
      </li>
      ';
-     $output.="</div>";
   }
 
-  $output.="
-  
-  <h4>You are members of circles:</h4>
-  ";
 
   $querymember="SELECT * FROM circle_members WHERE member_user_id='$userid'";
   $resultmember=mysqli_query($connection,$querymember) or die ("error in selecting member in circle");
@@ -54,7 +45,7 @@
       ';
     }
   }
-  $output.="</div>";
+  
 
   echo $output;
 mysqli_close($connection);

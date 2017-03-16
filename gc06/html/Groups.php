@@ -156,7 +156,7 @@ session_start();
            })
          })
 
-         window.location="../html/Groups.php";
+         window.location="../html/Groups.php?id=49";
       })
 
     </script>
