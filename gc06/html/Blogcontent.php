@@ -50,8 +50,12 @@
 
         <nav>
           <ul class="pager">
+            <li><button class="btn btn-default" id="previous">Previous</button></li>
+            <li><button class="btn btn-default" id="next">Next</button></li>
+            <!--
             <li><a href="#">Previous</a></li>
             <li><a href="#">Next</a></li>
+          -->
           </ul>
         </nav>
 
