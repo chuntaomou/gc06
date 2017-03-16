@@ -16,7 +16,7 @@ if (mysqli_num_rows($result)!= 0){
      $blogdate = $row["created_date"];
 
    echo('
-     <a href="../html/Blogcontent.php?id='.$blogid.'userid='.$_GET["id"].'" class="list-group-item">
+     <a href="../html/Blogcontent.php?blogid='.$blogid.'&id='.$_GET["id"].'" class="list-group-item">
        <h4 class="list-group-item-heading">'.$blogtitle.'</h4>
        <p class="list-group-item-text">'.$blogdate.'</p>
      </a>
