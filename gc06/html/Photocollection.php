@@ -35,9 +35,10 @@ session_start();
 
     <section>
       <div class="container">
+        <h1 class="page-header">Photo</h1>
         <div class="row">
-          <div class="col-md-8">
-            <h1 class="page-header">Photo</h1>
+          <div class="col-sm-8">
+
             <div class="container">
               <?php
               $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
@@ -48,30 +49,20 @@ session_start();
               $privacy_id=$row["privacy_id"];
               if($privacy_id==0){
                 echo "
-                <h4 id='privacy_level'> Current privacy level: show only to me</h4>
+                <h4 id='privacy_level'>Current privacy level: show only to me</h4>
                 ";
               }else if($privacy_id==1){
                 echo "
-                <h4 id='privacy_level'> Current privacy level: friends can see</h4>
+                <h4 id='privacy_level'>Current privacy level: friends can see</h4>
                 ";
               }else{
                 echo "
-                <h4 id='privacy_level'> Current privacy level: friends of friends can see</h4>
+                <h4 id='privacy_level'>Current privacy level: friends of friends can see</h4>
                 ";
               }
               mysqli_close($connection);
               ?>
 
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">change privacy level
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="menu2">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="a">show only to me</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="b">friends can see</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" id="c">friends of friends also can see</a></li>
-                </ul>
-              </div>
             </div>
             <ul class="photos gallery-parent">
               <?php
@@ -98,13 +89,40 @@ session_start();
               ?>
             </ul>
           </div>
+          <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+              <h4>Privacy setting</h4>
+              <br>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  select privacy level
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Only me</a></li>
+                  <li><a href="#">Friends</a></li>
+                  <li><a href="#">Friend of Friend</a></li>
+                </ul>
+              </div>
+              <br>
 
+            </div>
+            <div class="sidebar-module">
+              <h4>Share to Socialmedia</h4>
+              <ol class="list-unstyled">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+              </ol>
+            </div>
+          </div><!-- /.blog-sidebar -->
+</div>
+</div>
           <!-- Modal -->
           <div id="photoModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
 
-          <div class="col-md-12">
+          <div class="col-sm-8">
             <h3>Add a new album</h3>
             <div class="panel panel-default">
               <div class="panel-heading">
