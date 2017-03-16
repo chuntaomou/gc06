@@ -91,7 +91,7 @@ if ($myid == $userid) {
 if ($myid!=$userid) {
   //如果是朋友的话 ，直接就可以看profile
   if($friend==1){
-    echo("<div class='col-md-8'>
+    echo("<div class='col-md-4'>
       <ul>
         <li><strong>First Name:</strong>{$firstname}</li>
         <li><strong>Last Name:</strong>{$lastname}</li>
