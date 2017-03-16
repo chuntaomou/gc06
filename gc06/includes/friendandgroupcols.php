@@ -12,10 +12,11 @@
         //$userid = $_SESSION["userid"];
         //$userid=$_GET["id"];
         $userid=$_SESSION["userid"];
-        $query = "SELECT user_id,friend_id FROM friends_list WHERE user_id ='$userid' or friend_id = '$userid' and status='friend' ";
+        $query = "SELECT user_id,friend_id FROM friends_list WHERE status ='friend' and (user_id ='$userid' or friend_id = '$userid')  ";
         $result = mysqli_query($connection, $query) or die( 'Error occur selecting friends'.mysqli_error());
         $friendidArray = array();
-
+        $count = mysqli_num_rows($result);
+        echo $count;
         if (mysqli_num_rows($result)!= 0){
           while ($row=mysqli_fetch_array($result)){
            if ($row["user_id"]==$userid)  $friendidArray[]=$row["friend_id"];

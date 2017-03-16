@@ -97,11 +97,11 @@ $friendArray=array('');
     </div>
   </nav>
     <div class="row" style="margin:0px;">
-      <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;"">
+      <div class="col-md-4" style="background-color: white; overflow-y: scroll; height:350px;">
         <div id="friendmayknowcol">
           <?php include "../php/mysql_connect.php";   //friend recommendation
           $userid=$_SESSION["userid"];
-          $queryselect="SELECT * FROM friends_list WHERE user_id='$userid' OR friend_id='$userid' AND status='friend'";
+          $queryselect="SELECT * FROM friends_list WHERE (user_id='$userid' OR friend_id='$userid') AND status='friend'";
           $resultselect=mysqli_query($connection,$queryselect);
           $countselect=mysqli_num_rows($resultselect);
 
@@ -119,7 +119,7 @@ $friendArray=array('');
           }  //if
       //use friend id to find the friend of the friend
       foreach($friendArray as $friendid) {
-              $queryrecommend="SELECT * FROM friends_list WHERE user_id='$friendid' OR friend_id='$friendid' AND status='friend'";
+              $queryrecommend="SELECT * FROM friends_list WHERE (user_id='$friendid' OR friend_id='$friendid') AND status='friend'";
               $resultrecommend=mysqli_query($connection,$queryrecommend) or die("error in executing queryrecommend");
               $countrecommend=mysqli_num_rows($resultrecommend);
 
@@ -170,7 +170,9 @@ $friendArray=array('');
         <?php
         $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
         $id=$_SESSION["userid"];
-        $query="SELECT * FROM photo_detail ORDER BY posted_date DESC";
+
+foreach($friendArray as $friendid) {
+        $query="SELECT * FROM photo_detail WHERE posted_by_user_id='$friendid' ORDER BY posted_date DESC";
         $result=mysqli_query($connection,$query) or die("fail to execute query");
         $count=mysqli_num_rows($result);
 
@@ -288,7 +290,7 @@ $friendArray=array('');
           }
           echo $output;
         }
-
+      }
         mysqli_close($connection);
         ?>
       </div>

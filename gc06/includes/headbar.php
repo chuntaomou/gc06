@@ -20,18 +20,31 @@ if($count==0){
     $row2 = mysqli_fetch_array($result2);
     $requestfirstname = $row2["first_name"];
     $requestlastname = $row2["last_name"];
+    $pic = $row2["profile_pic"];
 
-    $outputfriend.="<div id='$requestid'>
+    $outputfriend.="
+    <div class='row' id='$requestid'>
+    <div class='col-md-1'>
     <img
-    src='http://image.shutterstock.com/display_pic_with_logo/639289/639289,1316701142,11/stock-vector-graphic-illustration-of-man-in-business-suit-as-user-icon-avatar-85147087.jpg'
+    src='../images/{$pic}'
     width='40' height='40'>
-    <div id='friendbutton'>
-    <button type='button' id='$requestid' class ='btn btn-primary acceptfriend'>accept</button>
     </div>
-    <div id='ignorebutton'>
-    <button type='button' id='$requestid' class ='btn btn-primary ignorebutton'>Ignore</button>
+    <div class='col-md-7' style='padding-left:10px; padding-top:10px'>
+    <ul id='id'>
+    <a href='../html/UserProfile.php?id=".$requestid."'>
+    <strong>".$requestfirstname." ".$requestlastname."</strong>
+    </a>
+    </ul>
     </div>
-    <div id='id'>".$requestfirstname." ".$requestlastname."</div></div>";
+    <div class='col-md-2 ' id='friendbutton'>
+    <button type='button' id='$requestid' class ='btn btn-success acceptfriend'>accept</button>
+    </div>
+    <div class='col-md-2 'id='ignorebutton'>
+    <button type='button' id='$requestid' class ='btn btn-danger ignorebutton'>Ignore</button>
+    </div>
+    </div>
+
+    ";
   }
 }
 mysqli_close ($connection);
@@ -40,7 +53,6 @@ mysqli_close ($connection);
 
     <a href="newhomepage.php"><img src="../img/logo.jpg" class="img-rounded" alt="Meet"></a>
     <div class="buttons-in-header pull-right">
-    <a href="#"><button type="button" class="btn btn-primary" >My account</button></a>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendrequest" >Friend Request</button>
     <button type="button" id="logout" class="btn btn-primary" >Log out</button>
   </div>
@@ -65,7 +77,7 @@ mysqli_close ($connection);
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
       </div>
     </div>
   </div>
@@ -83,6 +95,10 @@ $(".acceptfriend").click(function(){
              function(data){
             alert(data);
           })
+})
+
+$("#close").click(function(){
+    window.location ="../php/newhomepage.php";
 })
 
 
