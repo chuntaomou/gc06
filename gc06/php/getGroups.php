@@ -29,7 +29,7 @@
   }
 
   $output.="
-  <div class='row'>
+  
   <h4>You are members of circles:</h4>
   ";
 

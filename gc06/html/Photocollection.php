@@ -35,9 +35,10 @@ session_start();
 
     <section>
       <div class="container">
+        <h1 class="page-header">Photo</h1>
         <div class="row">
-          <div class="col-md-8">
-            <h1 class="page-header">Photo</h1>
+          <div class="col-sm-8">
+
             <div class="container">
               <?php
               $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
@@ -48,6 +49,7 @@ session_start();
               $privacy_id=$row["privacy_id"];
               if($privacy_id==0){
                 echo "
+
                 <h4 id='privacy_level'> Current privacy level: show only to friends</h4>
                 ";
               }else if($privacy_id==1){
@@ -61,9 +63,6 @@ session_start();
               }
               mysqli_close($connection);
               ?>
-
-
-
 
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">change privacy level
@@ -105,14 +104,13 @@ session_start();
             </ul>
           </div>
 
-
           <?php
           if($_SESSION["userid"]==$_GET["userid"]){
             include "../includes/addphotointoalbum.php";
           }
           ?>
-        </div>
-      </div>
+</div>
+</div>
     </section>
 
 
@@ -122,19 +120,7 @@ session_start();
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script>
-    $(document).ready(function(){
-      $("#myModal").on("show.bs.modal",function(event){
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var code   = button.data('code');
-        var modal  = $(this);
-        var photoid =button.data('id');
-        modal.find('[id="photo_url"]').text(code);
-        modal.find('[id="photo_id_in_album"]').text(photoid);
-        $("#photo_id_in_album").val(photoid);
-        $("#photo_id_in_album").hide();
 
-      });
-    });
       $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
       event.preventDefault();
       $(this).ekkoLightbox();
