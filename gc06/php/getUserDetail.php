@@ -41,7 +41,9 @@ if ($myid == $userid) {
       <li><strong>Work place:</strong>{$workplace}</li>
       <li><strong>Number:</strong>{$phonenumber}</li>
       <li><strong>DOB:</strong>September 16th</li>
-      <div class='btn-group pull-right'>
+      <br>
+      <div class='btn-group pull-right '>
+      <button class='btn btn-default' id='edit'> edit</button>
       <button type='button' class='btn btn-default'>Choose profile privacy</button>
       <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
         <span class='caret'></span>
@@ -53,7 +55,7 @@ if ($myid == $userid) {
         <li><a href='../php/setUserPrivacy.php?privacy=2'>all users</a></li>
       </ul>
       </div>
-      <li><button class='btn btn-default pull-right' id='edit'> edit</button></li>
+
     </ul>
   </div>
  <script>
