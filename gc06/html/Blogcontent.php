@@ -51,17 +51,17 @@
 
         <nav>
           <ul class="pager">
-            <li><button class="btn btn-default" id="previous">Previous</button></li>
-            <li><button class="btn btn-default" id="next">Next</button></li>
-            <!--
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
-          -->
+            <?php
+            echo '
+            <li><a href="../html/Blog.php?id='.$_GET["id"].'">Back</a></li>
+            ';
+            ?>
+
           </ul>
         </nav>
 
       </div><!-- /.blog-main -->
-
+<!--
       <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
         <div class="sidebar-module sidebar-module-inset">
           <h4>Privacy setting</h4>
@@ -87,14 +87,11 @@
             <li><a href="#">Facebook</a></li>
           </ol>
         </div>
-      </div><!-- /.blog-sidebar -->
+      </div>-->
 
     </div><!-- /.row -->
 
   </div><!-- /.container -->
-
-
-
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->

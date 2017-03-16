@@ -52,6 +52,11 @@ session_start();
             -->
             </ul>
           </div>
+
+          <?php
+          include "../includes/friendandgroupcols.php";
+          ?>
+          <!--
           <div class="col-md-4">
             <div class="panel panel-default friends">
               <div class="panel-heading">
@@ -100,6 +105,7 @@ session_start();
               </div>
             </div>
           </div>
+        -->
         </div>
       </div>
     </section>
