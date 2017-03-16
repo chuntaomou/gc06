@@ -7,6 +7,7 @@
     $userid=$_SESSION["userid"];
     $title=$_POST["title"];
     $content=$_POST["content"];
+    $destination="../html/Blog.php?id=$userid";
 
      $query = "INSERT INTO blog_detail (created_by_user_id, blog_title, blog_content) VALUES ( '$userid', '$title', '$content' )";
      $result = mysqli_query($connection, $query) or die('Error occur with query'.mysqli_error());
@@ -14,7 +15,7 @@
 
    if ($result) {
      echo "one blog has been added";
-
+     header("Location: {$destination}");
    }
    mysqli_close($connection);
 
