@@ -93,7 +93,7 @@ session_start();
       $.post("../php/registration2.php",{firstname, lastname, city, gender, statement, phonenumber},
        function(data){
         alert(data);
-        window.location = "../php/newhomepage.php";
+        window.location = "../html/Login.php";
       })
     })
 
