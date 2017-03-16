@@ -74,7 +74,7 @@ if ($myid == $userid) {
 
 
 //判断他们是否是朋友
-  $query2 ="SELECT * FROM friends_list where user_id='$myid' or friend_id='$myid' and status='friend'" ;
+  $query2 ="SELECT * FROM friends_list where (user_id='$myid' or friend_id='$myid') and status='friend'" ;
   $result2 =mysqli_query($connection, $query2) or die('Error making select users query'.mysqli_error());
   $num2 =mysqli_num_rows($result2);
   if ($num2!=0){

@@ -22,8 +22,8 @@ if(isset($_POST['searchval'])){
       $blogid=$row["blog_id"];
       $blogowner=$row["created_by_user_id"];
       //if blog owner is friend
-      $query1="SELECT * FROM friends_list WHERE user_id='$myid' AND friend_id='$blogowner' AND status='friend'";
-      $query2="SELECT * FROM friends_list WHERE user_id='$blogowner' AND friend_id='$myid' AND status='friend'";
+      $query1="SELECT * FROM friends_list WHERE (user_id='$myid' AND friend_id='$blogowner') AND status='friend'";
+      $query2="SELECT * FROM friends_list WHERE (user_id='$blogowner' AND friend_id='$myid') AND status='friend'";
 
       $result1=mysqli_query($connection,$query1);
       $result2=mysqli_query($connection,$query2);

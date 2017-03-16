@@ -4,7 +4,7 @@ $connection=mysqli_connect("localhost","root","root","socialsite_db");
 ini_set('display_error', '1');
 error_reporting(E_ALL);
  $userid = $_SESSION["userid"];
-$query = "SELECT user_id,friend_id FROM friends_list WHERE user_id ='$userid' or friend_id = '$userid' and status='friend' ";
+$query = "SELECT user_id,friend_id FROM friends_list WHERE (user_id ='$userid' or friend_id = '$userid') and status='friend' ";
 $result = mysqli_query($connection, $query) or die( 'Error occur selecting friends'.mysqli_error());
 $friendidArray = array();
 

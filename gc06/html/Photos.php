@@ -78,7 +78,7 @@ session_start();
                 if(($count1+$count2)==0){
                   //friends of friends
                   $hostid=$_SESSION["userid"];
-                  $queryfriendofhost="SELECT * FROM friends_list WHERE user_id='$hostid' or friend_id='$hostid' AND status='friend'";
+                  $queryfriendofhost="SELECT * FROM friends_list WHERE (user_id='$hostid' or friend_id='$hostid') AND status='friend'";
                   $resultfriendofhost=mysqli_query($connection,$queryfriendofhost);
                   $countfriendofhost=mysqli_num_rows($resultfriendofhost);
 
@@ -90,7 +90,7 @@ session_start();
                         $friend_id=$rowfriendofhost["user_id"];
                       }
 
-                      $queryfriendoffriend="SELECT * FROM friends_list WHERE user_id='$friend_id' or friend_id='$friend_id' AND status='friend'";
+                      $queryfriendoffriend="SELECT * FROM friends_list WHERE (user_id='$friend_id' or friend_id='$friend_id') AND status='friend'";
                       $resultfriendoffriend=mysqli_query($connection,$queryfriendoffriend);
                       $countfriendoffriend=mysqli_num_rows($resultfriendoffriend);
 
