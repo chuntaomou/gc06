@@ -76,12 +76,15 @@ if ($myid == $userid) {
 
 //判断他们是否是朋友
   $query2 ="SELECT * FROM friends_list where user_id='$myid' or friend_id='$myid'";
-  $result2 =mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
-  while ($row2=mysqli_fetch_array($result2)){
-    if (($row2["user_id"]==$userid)||($row2["friend_id"]==$userid))    $friend=1;
-  }
-
-//三种情况 ： 一种是自己的profile 一种是好友的profile 一种是陌生人的profile
+  $result2 =mysqli_query($connection, $query2) or die('Error making select users query'.mysqli_error());
+  $num2 =mysqli_num_rows($result2);
+  if ($num2!=0){
+   while ($row2=mysqli_fetch_array($result2)){
+    // echo $row2["user_id"];
+    if (($row2["user_id"]==$userid)||($row2["friend_id"]==$userid))   { $friend=1;}
+   }
+ }
+ //三种情况 ： 一种是自己的profile 一种是好友的profile 一种是陌生人的profile
 //先判断是什么profile 然后再判断用户的隐私等级
 
 //如果不是自己的话 ，先判断他们是否为朋友
@@ -96,7 +99,7 @@ if ($myid!=$userid) {
         <li><strong>City:</strong>{$city}</li>
         <li><strong>Work place:</strong>{$workplace}</li>
         <li><strong>Number:</strong>{$phonenumber}</li>
-        <li><strong>DOB:</strong>September 16th</li>
+        <li><strong>DOB:</strong>September 15th</li>
         ");
   }
   //不是朋友 但是 对方的profile可以显示给陌生人的话，就可以看
