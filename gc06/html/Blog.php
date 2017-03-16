@@ -43,18 +43,11 @@ session_start();
     <br>
     <br>
           <div class="list-group">
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">Blog1</h4>
-              <p class="list-group-item-text">loushen changde meiwoshuai</p>
-            </a>
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">Blog2</h4>
-              <p class="list-group-item-text">loushen changde meiwoshuai</p>
-            </a>
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">Blog3</h4>
-              <p class="list-group-item-text">loushen changde meiwoshuai</p>
-            </a>
+
+            <?php
+            $id =$_GET['id'];
+
+            include "../blog/listBlog.php?id={$id}"; ?>
           </div>
         </div>
         <?php
