@@ -31,21 +31,8 @@ $output.='</form>';
 $output.='<li><button class="btn btn-default pull-right" type="submit" form="form1"> save</button></li>';
 //先判断是否是自己，如果是自己的话 就可以编辑
 if ($myid == $userid) {
-  echo('
-      <div class="btn-group">
-      <button type="button" class="btn btn-default">Choose profile privacy</button>
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="../php/setUserPrivacy.php?privacy=0">only friends</a></li>
-        <li><a href="../php/setUserPrivacy.php?privacy=1">circle can see</a></li>
-        <li><a href="../php/setUserPrivacy.php?privacy=2">all users</a></li>
-      </ul>
-      </div>'
-  );
-  echo("<div class='col-md-8' id='profile'>
+
+  echo("<div class='col-md-4' id='profile'>
     <ul>
       <li><strong>First Name:</strong>{$firstname}</li>
       <li><strong>Last Name:</strong>{$lastname}</li>
@@ -54,6 +41,18 @@ if ($myid == $userid) {
       <li><strong>Work place:</strong>{$workplace}</li>
       <li><strong>Number:</strong>{$phonenumber}</li>
       <li><strong>DOB:</strong>September 16th</li>
+      <div class='btn-group pull-right'>
+      <button type='button' class='btn btn-default'>Choose profile privacy</button>
+      <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        <span class='caret'></span>
+        <span class='sr-only'>Toggle Dropdown</span>
+      </button>
+      <ul class='dropdown-menu'>
+        <li><a href='../php/setUserPrivacy.php?privacy=0'>only friends</a></li>
+        <li><a href='../php/setUserPrivacy.php?privacy=1'>circle can see</a></li>
+        <li><a href='../php/setUserPrivacy.php?privacy=2'>all users</a></li>
+      </ul>
+      </div>
       <li><button class='btn btn-default pull-right' id='edit'> edit</button></li>
     </ul>
   </div>
@@ -106,7 +105,7 @@ if ($myid!=$userid) {
 
    else if($privacy==2){
 
-  echo("<div class='col-md-8'>
+  echo("<div class='col-md-4'>
     <ul>
       <li><strong>First Name:</strong>{$firstname}</li>
       <li><strong>Last Name:</strong>{$lastname}</li>
@@ -130,7 +129,7 @@ if ($myid!=$userid) {
   ");
 }
 //如果不是朋友 而且设置了对陌生人不可见。 那么就看不见profile
-else { echo ("<div class='col-md-8'>
+else { echo ("<div class='col-md-4'>
     <ul>
       <li><strong>This user set the profile only visible to friends</strong></li>
       <li><button type='submit' class='btn btn-default pull-right' id='add'> add friend</button></li>

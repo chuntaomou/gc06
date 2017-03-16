@@ -90,11 +90,11 @@ ini_set('error_reporting', E_ALL);
 
 
                 ?>
-
+                <?php
+                include "../includes/friendandgroupcols.php";
+                ?>
               </div>
-              <?php
-              include "../includes/friendandgroupcols.php";
-              ?><br><br>
+
               <div class="row">
                 <div class="col-md-8">
                   <div class="panel panel-default">
