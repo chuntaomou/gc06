@@ -10,7 +10,8 @@
         ini_set('display_error', '1');
         error_reporting(E_ALL);
         //$userid = $_SESSION["userid"];
-        $userid=$_GET["id"];
+        //$userid=$_GET["id"];
+        $userid=$_SESSION["userid"];
         $query = "SELECT user_id,friend_id FROM friends_list WHERE user_id ='$userid' or friend_id = '$userid' and status='friend' ";
         $result = mysqli_query($connection, $query) or die( 'Error occur selecting friends'.mysqli_error());
         $friendidArray = array();
@@ -51,7 +52,7 @@
       </ul>
       <div class="clearfix"></div>
       <?php
-      $id=$_GET["id"];
+      $id=$_SESSION["userid"];
       echo '
       <a class="btn btn-primary" href="../html/Friends.php?id='.$id.'" style="margin-top: 10px;">View All Friends</a>
       ';
@@ -69,7 +70,8 @@
       ini_set('error_reporting', E_ALL);
 
       //$userid=$_SESSION["userid"];
-      $userid=$_GET["id"];
+      //$userid=$_GET["id"];
+      $userid=$_SESSION["userid"];
       $output="";
       $query = "SELECT * FROM circle_detail WHERE circle_admin_user_id ='$userid' ";
       $result = mysqli_query($connection, $query) or die('Error making select users query'.mysqli_error());
@@ -116,7 +118,8 @@
       ?>
       <div class="clearfix"></div>
       <?php
-      $id=$_GET["id"];
+      //$id=$_GET["id"];
+      $id=$_SESSION["userid"];
       echo '
       <a href="../html/Groups.php?id='.$id.'" class="btn btn-primary">View All Groups</a>
       ';

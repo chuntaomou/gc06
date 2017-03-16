@@ -99,39 +99,18 @@ session_start();
               }else{
                 echo "There is no photo yet, add some!";
               }
-<<<<<<< HEAD
 
-=======
-              echo $output;
->>>>>>> e66a388123e28afea198cd6869b63d06227ee999
               mysqli_close($connection);
               ?>
             </ul>
           </div>
 
 
-          <div class="col-md-12">
-            <h3>Add a new album</h3>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">Adding a new photo</h4>
-              </div>
-              <div class="panel-body">
-                <?php
-                echo '
-                <form method="post" action="../php/addphototoalbum.php?id='.$_GET["id"].'" enctype="multipart/form-data">
-                  <input type="file" name="image" value="Add from system" class="btn btn-default">
-                  <!--<button class="btn btn-default" type="file">Add from system</button>-->
-                  <div class="form-group">
-                    <textarea class="form-control" name="text" cols="60" style="height: 100px;" placeholder="Add a title for your photo album"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                ';
-                ?>
-              </div>
-            </div>
-          </div>
+          <?php
+          if($_SESSION["userid"]==$_GET["userid"]){
+            include "../includes/addphotointoalbum.php";
+          }
+          ?>
         </div>
       </div>
     </section>

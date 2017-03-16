@@ -51,7 +51,7 @@ ini_set('error_reporting', E_ALL);
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="profile">
               <h1 class="page-header" id="username"><?php include_once "../php/userProfile.php"; ?></h1>
               <div class="row">
@@ -117,9 +117,7 @@ ini_set('error_reporting', E_ALL);
               </div>
             </div>
           </div>
-          <?php
-          include "../includes/friendandgroupcols.php";
-          ?>
+
         </div>
       </div>
     </section>
