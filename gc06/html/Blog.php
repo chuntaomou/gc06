@@ -45,9 +45,8 @@ session_start();
           <div class="list-group">
 
             <?php
-            $id =$_GET['id'];
 
-            include "../blog/listBlog.php?id={$id}"; ?>
+            include "../blog/listBlog.php"; ?>
           </div>
         </div>
         <?php
