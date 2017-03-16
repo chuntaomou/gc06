@@ -99,7 +99,10 @@ if ($myid!=$userid) {
         <li><strong>Work place:</strong>{$workplace}</li>
         <li><strong>Number:</strong>{$phonenumber}</li>
         <li><strong>DOB:</strong>September 15th</li>
-        ");
+      </div>  
+
+        "
+      );
   }
   //不是朋友 但是 对方的profile可以显示给陌生人的话，就可以看
 
