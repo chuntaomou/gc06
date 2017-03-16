@@ -29,12 +29,13 @@
 
   <?php require "../includes/headerforotherpages.php";
   ?>
+  <?php include"../blog/blogcontent.php"; ?>
 
 
   <div class="container">
 
     <div class="blog-header">
-      <h1 class="blog-title">XX's Blog</h1>
+      <h1 class="blog-title"><?php echo $name;?>'s Blog</h1>
     </div>
 
     <div class="row">
@@ -43,8 +44,8 @@
 
         <div class="blog-post">
 
-           <?php include"../blog/blogcontent.php"; ?>
-
+          <h2 class="blog-post-title"> <?php echo $title; ?></h2>
+               <p><?php echo $content; ?></p>
         </div><!-- /.blog-post -->
 
 

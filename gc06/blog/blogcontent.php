@@ -11,12 +11,12 @@ $row =mysqli_fetch_array($result);
 $content = $row["blog_content"];
 $title = $row["blog_title"];
 
-if ($result){
+$userid = $_GET["id"];
+$query2 ="SELECT * FROM user_detail WHERE user_id='$userid'";
+$result2 = mysqli_query($connection, $query2) or die('Error occur selecting friends'.mysqli_error());
+$row2 = mysqli_fetch_array($result2);
+$name = $row2["first_name"]." ".$row2["last_name"];
 
-   echo ('      <h2 class="blog-post-title">'.$title.'</h2>
-           <p>'.$content.'</p>
-        ');
-}
 
 
 mysqli_close($connection);
