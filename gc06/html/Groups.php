@@ -43,7 +43,7 @@ session_start();
             </h1>
 
              <ul class="photos gallery-parent">
-               <?php include "../php/getGroups.php"; ?>
+               <?php include "../php/getGroups.php" ?>
              </ul>
              <!-- Trigger the modal with a button -->
 
@@ -156,7 +156,7 @@ session_start();
            })
          })
 
-         window.location="../html/Groups.php";
+         window.location="../html/Groups.php?id=49";
       })
 
     </script>

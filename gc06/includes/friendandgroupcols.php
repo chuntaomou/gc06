@@ -19,6 +19,7 @@
         $result = mysqli_query($connection, $query) or die( 'Error occur selecting friends'.mysqli_error());
         $friendidArray = array();
 
+        $count = mysqli_num_rows($result);
         if (mysqli_num_rows($result)!= 0){
           while ($row=mysqli_fetch_array($result)){
            if ($row["user_id"]==$userid)  $friendidArray[]=$row["friend_id"];

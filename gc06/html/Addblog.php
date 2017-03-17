@@ -96,10 +96,12 @@ session_start();
     </div>
   </section>
     <script>
+    /*
       $(".submit").click(function(){
           $.post
 
       })
+      */
     </script>
 </body>
 </html>

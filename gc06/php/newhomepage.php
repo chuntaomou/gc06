@@ -179,8 +179,8 @@ $friendArray=array('');
             //see if friends
             $postid=$row["posted_by_user_id"];
             $myid=$_SESSION["userid"];
-            $queryfriend1="SELECT * FROM friends_list WHERE user_id='$myid' AND friend_id='$postid'";
-            $queryfriend2="SELECT * FROM friends_list WHERE user_id='$postid' AND friend_id='$myid'";
+            $queryfriend1="SELECT * FROM friends_list WHERE user_id='$myid' AND friend_id='$postid' AND status='friend'";
+            $queryfriend2="SELECT * FROM friends_list WHERE user_id='$postid' AND friend_id='$myid' AND status='friend'";
             $resultfriend1=mysqli_query($connection,$queryfriend1);
             $resultfriend2=mysqli_query($connection,$queryfriend2);
             $countfriend1=mysqli_num_rows($resultfriend1);
