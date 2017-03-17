@@ -1,4 +1,4 @@
-<div class="col-md-8">
+
   <h3>Add a new album</h3>
   <div class="panel panel-default">
     <div class="panel-heading">

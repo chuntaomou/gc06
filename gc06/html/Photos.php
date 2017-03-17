@@ -11,29 +11,30 @@ session_start();
   <link rel="shortcut icon" href="../Icons/webicon.ico" type="image/x-icon">
 
   <!-- Bootstrap core CSS -->
-   <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/bootstrap.css" rel="stylesheet">
 
-   <!-- Custom styles for this template -->
-   <link href="../css/style.css" rel="stylesheet">
-   <link href="../css/font-awesome.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/font-awesome.css" rel="stylesheet">
 </head>
 
 
-  <body>
-    <?php require "../includes/checklogin.php";
-    ?>
+<body>
+  <?php require "../includes/checklogin.php";
+  ?>
 
 
-    <?php require "../includes/headerforotherpages.php";
-    ?>
+  <?php require "../includes/headerforotherpages.php";
+  ?>
 
 
 
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h1 class="page-header">Photo Albums</h1>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="page-header">Photo Albums</h1>
+          <div class="albumlist">
             <ul class="photos gallery-parent">
               <?php
               $connection=mysqli_connect("localhost","root","root","socialsite_db") or die("database is not connected");
@@ -41,7 +42,7 @@ session_start();
               $userid=$_SESSION["userid"];
               $output="";
               $type=3;
-             // if user view himself
+              // if user view himself
               if($_SESSION["userid"]==$_GET["id"]){
                 $query="SELECT * FROM photo_album WHERE created_by_user_id='$id'";
                 $result=mysqli_query($connection,$query) or die ("Error in selecting photo albums");
@@ -110,30 +111,30 @@ session_start();
                     }
                   }
 
-                 //if in same circle
-                 $hostid=$_SESSION["userid"];
-                 $userid=$_GET["id"];
-                 //host is a member of a circle
-                 $querymemberhost="SELECT * FROM circle_members WHERE member_user_id='$hostid'";
-                 $resultmemberhost=mysqli_query($connection,$querymemberhost);
-                 $countmemberhost=mysqli_num_rows($resultmemberhost);
+                  //if in same circle
+                  $hostid=$_SESSION["userid"];
+                  $userid=$_GET["id"];
+                  //host is a member of a circle
+                  $querymemberhost="SELECT * FROM circle_members WHERE member_user_id='$hostid'";
+                  $resultmemberhost=mysqli_query($connection,$querymemberhost);
+                  $countmemberhost=mysqli_num_rows($resultmemberhost);
 
-                 if($countmemberhost>0){
-                   while($rowmemberhost=mysqli_fetch_array($resultmemberhost)){
-                     $circle_id=$rowmemberhost["circle_id"];
-                     $queryselectmember="SELECT * FROM circle_members WHERE circle_id='$circle_id'";
-                     $resultselectmember=mysqli_query($connection,$queryselectmember) or die("error in selecting");
-                     $countselectmember=mysqli_num_rows($resultselectmember);
+                  if($countmemberhost>0){
+                    while($rowmemberhost=mysqli_fetch_array($resultmemberhost)){
+                      $circle_id=$rowmemberhost["circle_id"];
+                      $queryselectmember="SELECT * FROM circle_members WHERE circle_id='$circle_id'";
+                      $resultselectmember=mysqli_query($connection,$queryselectmember) or die("error in selecting");
+                      $countselectmember=mysqli_num_rows($resultselectmember);
 
-                     if($countselectmember>0){
-                       while($rowselectmember=mysqli_fetch_array($resultselectmember)){
-                         if($rowselectmember["member_user_id"]==$_GET["id"]){
-                           $type=$type+10;
-                         }
-                       }
-                     }
-                   }
-                 }
+                      if($countselectmember>0){
+                        while($rowselectmember=mysqli_fetch_array($resultselectmember)){
+                          if($rowselectmember["member_user_id"]==$_GET["id"]){
+                            $type=$type+10;
+                          }
+                        }
+                      }
+                    }
+                  }
 
                 }else{
                   //friends
@@ -240,6 +241,7 @@ session_start();
               ?>
             </ul>
           </div>
+          <div class="clearfix"></div>
 
           <?php
           if($_SESSION["userid"]==$_GET["id"]){
@@ -263,13 +265,13 @@ session_start();
     <script src="js/bootstrap.js"></script>
     <script src="js/ekko-lightbox.js"></script>
     <script>
-      $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
       event.preventDefault();
       $(this).ekkoLightbox();
-      });
-      $(function () {
+    });
+    $(function () {
       $('[data-hover="tooltip"]').tooltip()
-      })
+    })
     </script>
   </body>
-</html>
+  </html>
