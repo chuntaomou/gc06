@@ -4,7 +4,10 @@
       <h3 class="panel-title">My Friends</h3>
     </div>
     <div class="panel-body">
-      <ul>
+      <ul style="
+    padding-left: 0px;
+    margin-top: 10px;
+">
         <?php
         include "../php/mysql_connect.php";
         ini_set('display_error', '1');
@@ -15,8 +18,7 @@
         $query = "SELECT user_id,friend_id FROM friends_list WHERE status ='friend' and (user_id ='$userid' or friend_id = '$userid')  ";
         $result = mysqli_query($connection, $query) or die( 'Error occur selecting friends'.mysqli_error());
         $friendidArray = array();
-        $count = mysqli_num_rows($result);
-        echo $count;
+
         if (mysqli_num_rows($result)!= 0){
           while ($row=mysqli_fetch_array($result)){
            if ($row["user_id"]==$userid)  $friendidArray[]=$row["friend_id"];
@@ -37,12 +39,12 @@
               }
              echo
               ('
-                <li>
+                <div class="col-md-6 text-center" style="margin-bottom:10px;">
                   <a href="../html/UserProfile.php?id='.$id.'" class ="thumbail">
                     <img src= '.$icon.' alt ="usericon" style="width: 40px; height: 40px">
-                    '.$name.'
+                  <h5>'.$name.'</h5>
                   </a>
-                </li>
+                </div>
             ');
            }
         }
@@ -54,8 +56,9 @@
       <div class="clearfix"></div>
       <?php
       $id=$_SESSION["userid"];
-      echo '
-      <a class="btn btn-primary" href="../html/Friends.php?id='.$id.'" style="margin-top: 10px;">View All Friends</a>
+      echo '<div class="row">
+      <a class="btn btn-block btn-primary" href="../html/Friends.php?id='.$id.'" style="margin-top: 10px;">View All Friends</a>
+      </div>
       ';
       ?>
     </div>
@@ -121,8 +124,9 @@
       <?php
       //$id=$_GET["id"];
       $id=$_SESSION["userid"];
-      echo '
-      <a href="../html/Groups.php?id='.$id.'" class="btn btn-primary">View All Groups</a>
+      echo '<div class="row">
+      <a href="../html/Groups.php?id='.$id.'" class="btn btn-primary btn-block">View All Groups</a>
+      </div>
       ';
       ?>
     </div>
