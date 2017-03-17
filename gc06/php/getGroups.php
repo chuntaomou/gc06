@@ -22,12 +22,6 @@
      </li>
      ';
 }
-$output.="</div>";
-  $output.="
-  <div class='row'>
-  <h4>You are members of circles:</h4>
-  ";
-  }
 
   $querymember="SELECT * FROM circle_members WHERE member_user_id='$userid'";
   $resultmember=mysqli_query($connection,$querymember) or die ("error in selecting member in circle");
